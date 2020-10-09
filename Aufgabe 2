@@ -7,11 +7,10 @@
 <head/>
 
 <body>
-<a id="top"> </a>
 <h1> Meine Person </h1>
 <h2> Maria Kaltenbach </h2>
 
-<h2><a name="Ankername">Überschrift</a></h2>
+<p> Klicke hier um direkt zum Absatz <a href="#MeinStudium">Mein Studium </a> zu kommen. </p>
 
 <img src="https://www.happytravels.de/wp-content/uploads/2018/01/Schneeleopard-Augen-seltene-Tiere.jpg" alt="Foto von mir" width="100" height="100">
 
@@ -20,14 +19,16 @@
 In meiner Freizeit mache ich gerne was mit meinen Freunden und mit meinem Freund. Ich hatte mal ein 
 Meerschweinchen welches leider anfang diesen Jahres verstab.</p>
 
-<h3> Mein Sudium </h3>
+
+<a id="MeinStudium"> </a>
+<h3> Mein Studium </h3>
 <p> Ich Studiere seid Oktober 2019 OnlineMedien habe demnach nach dem ersten Semester ein B-Semester
 eingelegt. Bis jetzte Interessieren mich die Themen in diesem Studeiengang sehr und hoffe das 
 dies auch so bleibt.</p>
 
 <p> Die Hochschule, an welcher ich Studiere: <a href="https://hs-furtwangen.de">Hochschule Furtwangen.</a></p>
 
-<p> Willst du an den <a href="#top">Anfang dieser Seite</a> ? </p>
+
 
 </body>
 

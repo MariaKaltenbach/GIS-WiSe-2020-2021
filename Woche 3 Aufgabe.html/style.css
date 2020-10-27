@@ -1,36 +1,92 @@
 Body {
-/* Hintergund der Weseiten, ausrichtung und Schriftart*/
+/* Hintergund der Weseiten, breite, ausrichtung und Schriftart*/
     background: url("../Bilder/bg.png");
     font-family: sans-serif;
+    width: 800px;    
     text-align: center;
-    
 }
 
-.topnav {
-    background-color: #333;
+.Mynav {
+    background-color:black;
     overflow: hidden;
+    margin-left: 450px;
   }
   
   /* Navigation an die rechte seite der Wesite heften */
-  .topnav a {
+  .Mynav a {
     float: right;
     color: white;
     text-align: right;
-    padding: 14px 16px;
+    padding: 8px 10px;
+    border-bottom: 3px;
     text-decoration: none;
     font-size: 17px;
   }
   
   /* Farbe der Navigation wenn man drüber fährt*/
-  .topnav a:hover {
-    background-color: rgb(63, 70, 173);
+  .Mynav a:hover {
+    background-color: blueviolet;
     color: black;
+    
   }
   
   /* Aktuelle Navigation (Link) hervorheben*/
-  .topnav a.active {
+  .Mynav a.active {
     background-color: blueviolet;
     color: white;
   }
+  /* Überschrift des Kontakzformulars*/
+  #KontaktÜberschrift{
+    text-align: left;
+    color: blueviolet ;
+  }
+  /* Kontaktformular anhand des Box Modells */
+.Vorname {
+  background: grey;
+  color: white;
 
+  width: 250px;
+  padding: 5px;
  
+}
+
+.Nachname {
+  background: grey;
+  color: white;
+
+  width: 250px;
+padding: 5px;
+}
+.E-Mail {
+  background: grey;
+  color: white;
+
+  width: 250px;
+  padding: 5px;
+}
+.Nachricht {
+  background: grey;
+  color: white;
+
+  width: 350px;
+  padding: 50px;
+}
+.absenden {
+  background: grey;
+  color: white;
+
+  width: 150px;
+  padding: 5px;
+}
+/* Liste mit ID bearbeitet*/
+#Liste{
+  list-style: square;
+  list-style-position: inside;
+}
+h1, h2, h3 {
+  color: gray;
+}
+
+a{
+  color: blueviolet;
+}

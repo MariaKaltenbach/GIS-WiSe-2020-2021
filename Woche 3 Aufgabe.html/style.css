@@ -2,7 +2,7 @@ Body {
 /* Hintergund der Weseiten, breite, ausrichtung und Schriftart*/
     background: url("../Bilder/bg.png");
     font-family: sans-serif;
-    width: 800px;    
+    /*width: 800px;  */  
     text-align: center;
 }
 
@@ -41,28 +41,13 @@ Body {
     color: blueviolet ;
   }
   /* Kontaktformular anhand des Box Modells */
-.Vorname {
+.Vorname , .Nachname , .E-Mail{
   background: grey;
   color: white;
 
   width: 250px;
   padding: 5px;
  
-}
-
-.Nachname {
-  background: grey;
-  color: white;
-
-  width: 250px;
-padding: 5px;
-}
-.E-Mail {
-  background: grey;
-  color: white;
-
-  width: 250px;
-  padding: 5px;
 }
 .Nachricht {
   background: grey;
@@ -83,6 +68,7 @@ padding: 5px;
   list-style: square;
   list-style-position: inside;
 }
+/* Überschriften und Links mit Farbe versehen*/
 h1, h2, h3 {
   color: gray;
 }
@@ -90,3 +76,62 @@ h1, h2, h3 {
 a{
   color: blueviolet;
 }
+
+/* Animation und Transitions hinzugefügt*/
+div > p {
+transition: color 3s ease-in;
+color: blueviolet;
+animation-duration: 2s;
+animation-name: slidein;
+}
+@keyframes slidein{
+  from{
+    margin-left: 100%;
+    width: 200%;
+  }
+  to{
+    margin-left: 0%;
+    width: 100%;
+  }
+   }
+
+/*Media Queris / Website responsiv machen*/
+     @media only screen and (min-width: 600px) {
+       body{
+         font-size: smaller;
+         display: block; /*nicht gesmate Bildschirmbreite ein*/
+       }
+   
+     }
+     @media only screen and (max-width: 1025px){
+        body{
+        font-size: medium;
+}
+
+     }
+
+     @media only screen and (min-width: 1024px){
+      body{
+      font-size: large;
+      }
+   
+   
+     }
+/*Flussverhalten*/
+    div img{
+      float: left;
+    }
+
+    b{
+      display: block;
+    }
+
+     .flexbox > div{
+      background-color: white;
+      margin: auto;
+      padding: initial;
+
+     }
+
+  
+

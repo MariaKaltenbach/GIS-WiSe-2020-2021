@@ -7,9 +7,9 @@ Body {
     }
     
     .Mynav {
-        background-color:black;
+        background-color:gray;
         overflow: hidden;
-        margin-left: 450px;
+    
       }
       
       /* Navigation an die rechte seite der Wesite heften */
@@ -41,33 +41,39 @@ Body {
         color: blueviolet ;
       }
       /* Kontaktformular anhand des Box Modells */
-    .Vorname , .Nachname , .E-Mail{
-      background: grey;
-      color: white;
-    
-      width: 250px;
-      padding: 5px;
-     
+    form{
+      background-color: grey;
+      width: 370px; 
+      padding: 20px;
+      border: 1px solid gray;
+      
+}
+
+    label{
+      display: block;
+      cursor: pointer;
     }
-    .Nachricht {
-      background: grey;
-      color: white;
-    
-      width: 350px;
-      padding: 50px;
-    }
-    .absenden {
-      background: grey;
-      color: white;
-    
-      width: 150px;
-      padding: 5px;
-    }
-    /* Liste mit ID bearbeitet*/
+
+    input{
+      width: 300px;
+      border: 1px solid;
+      margin-bottom: 1em;
+   }
+  
+   textarea{
+    height: 7em;
+   }
+
+  
+   /* Liste mit ID bearbeitet*/
     #Liste{
       list-style: square;
       list-style-position: inside;
     }
+    
+     #Liste2{
+       list-style: none;
+     }
     /* Überschriften und Links mit Farbe versehen*/
     h1, h2, h3 {
       color: gray;
@@ -96,10 +102,10 @@ Body {
        }
     
     /*Media Queris / Website responsiv machen*/
-         @media only screen and (min-width: 600px) {
+       /*    @media only screen and (min-width: 600px) {
            body{
              font-size: smaller;
-             display: block; /*nicht gesmate Bildschirmbreite ein*/
+             display: block; nicht gesmate Bildschirmbreite ein
            }
        
          }
@@ -114,15 +120,15 @@ Body {
           body{
           font-size: large;
           }
+      
        
-       
-         }
+         } */
     /*Flussverhalten*/
         div img{
           float: left;
         }
     
-        b{
+       div > b{
           display: block;
         }
     

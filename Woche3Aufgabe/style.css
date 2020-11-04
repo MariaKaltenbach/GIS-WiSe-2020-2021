@@ -47,21 +47,25 @@ Body {
       padding: 20px;
       border: 1px solid gray;
       
+      
 }
 
     label{
       display: block;
       cursor: pointer;
+      margin-right: 850px;
     }
 
     input{
       width: 300px;
       border: 1px solid;
       margin-bottom: 1em;
+      margin-right: 1000px;
    }
   
    textarea{
     height: 7em;
+    margin-right: 850px;
    }
 
   

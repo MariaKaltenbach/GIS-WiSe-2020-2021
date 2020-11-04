@@ -106,27 +106,32 @@ Body {
        }
     
     /*Media Queris / Website responsiv machen*/
-       /*    @media only screen and (min-width: 600px) {
-           body{
-             font-size: smaller;
-             display: block; nicht gesmate Bildschirmbreite ein
-           }
-       
-         }
-         @media only screen and (max-width: 1025px){
-            body{
-            font-size: medium;
+         
+    @media only screen and (min-width: 320px) {
+      h1{
+        font-size: 0.8rem;
+        height: auto;
+        width: auto;
+      }
+  
     }
-    
-         }
-    
-         @media only screen and (min-width: 1024px){
-          body{
-          font-size: large;
-          }
-      
-       
-         } */
+    @media only screen and (min-width: 768px){
+       h1{
+         font-size: 2rem;
+         height: auto;
+         width: auto;
+}
+
+    }
+
+    @media only screen and (min-width: 1000px){
+     h1{
+       font-size: 2rem;
+       height: auto;
+       width: auto;
+     }
+     
+
     /*Flussverhalten*/
         div img{
           float: left;

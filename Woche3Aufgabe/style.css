@@ -1,151 +1,148 @@
 Body {
-    /* Hintergund der Weseiten, breite, ausrichtung und Schriftart*/
-        background: url("../Bilder/bg.png");
-        font-family: sans-serif;
-        /*width: 800px;  */  
-        text-align: center;
-    }
-    
-    .Mynav {
-        background-color:gray;
-        overflow: hidden;
-    
-      }
-      
-      /* Navigation an die rechte seite der Wesite heften */
-      .Mynav a {
-        float: right;
-        color: white;
-        text-align: right;
-        padding: 8px 10px;
-        border-bottom: 3px;
-        text-decoration: none;
-        font-size: 17px;
-      }
-      
-      /* Farbe der Navigation wenn man drüber fährt*/
-      .Mynav a:hover {
-        background-color: blueviolet;
-        color: black;
-        
-      }
-      
-      /* Aktuelle Navigation (Link) hervorheben*/
-      .Mynav a.active {
-        background-color: blueviolet;
-        color: white;
-      }
-      /* Überschrift des Kontakzformulars*/
-      #KontaktÜberschrift{
-        text-align: left;
-        color: blueviolet ;
-      }
-      /* Kontaktformular anhand des Box Modells */
-    form{
-      background-color: grey;
-      width: 370px; 
-      padding: 20px;
-      border: 1px solid gray;
-      
-      
+  /* Hintergund der Weseiten, breite, ausrichtung und Schriftart*/
+  background: url("../Bilder/bg.png");
+  font-family: sans-serif;
+  /*width: 800px;  */
+  text-align: center;
 }
 
-    label{
-      display: block;
-      cursor: pointer;
-      margin-right: 850px;
-    }
-
-    input{
-      width: 300px;
-      border: 1px solid;
-      margin-bottom: 1em;
-      margin-right: 1000px;
-   }
-  
-   textarea{
-    height: 7em;
-    margin-right: 850px;
-   }
-
-  
-   /* Liste mit ID bearbeitet*/
-    #Liste{
-      list-style: square;
-      list-style-position: inside;
-    }
-    
-     #Liste2{
-       list-style: none;
-     }
-    /* Überschriften und Links mit Farbe versehen*/
-    h1, h2, h3 {
-      color: gray;
-    }
-    
-    a{
-      color: blueviolet;
-    }
-    
-    /* Animation und Transitions hinzugefügt*/
-    div > p {
-    transition: color 3s ease-in;
-    color: blueviolet;
-    animation-duration: 2s;
-    animation-name: slidein;
-    }
-    @keyframes slidein{
-      from{
-        margin-left: 100%;
-        width: 200%;
-      }
-      to{
-        margin-left: 0%;
-        width: 100%;
-      }
-       }
-    
-    /*Media Queris / Website responsiv machen*/
-         
-    @media only screen and (min-width: 320px) {
-      h1{
-        font-size: 0.8rem;
-        height: auto;
-        width: auto;
-      }
-  
-    }
-    @media only screen and (min-width: 768px){
-       h1{
-         font-size: 2rem;
-         height: auto;
-         width: auto;
+.Mynav {
+  background-color: gray;
+  overflow: hidden;
 }
 
+/* Navigation an die rechte seite der Wesite heften */
+
+.Mynav a {
+  float: right;
+  color: white;
+  text-align: right;
+  padding: 8px 10px;
+  border-bottom: 3px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Farbe der Navigation wenn man drüber fährt*/
+
+.Mynav a:hover {
+  background-color: blueviolet;
+  color: black;
+}
+
+/* Aktuelle Navigation (Link) hervorheben*/
+
+.Mynav a.active {
+  background-color: blueviolet;
+  color: white;
+}
+
+/* Überschrift des Kontakzformulars*/
+
+#KontaktÜberschrift {
+  text-align: left;
+  color: blueviolet;
+}
+
+/* Kontaktformular anhand des Box Modells */
+
+form {
+  background-color: grey;
+  width: 370px;
+  padding: 20px;
+  border: 1px solid gray;
+}
+
+label {
+  display: block;
+  cursor: pointer;
+  text-align: left;
+}
+
+input {
+  width: 300px;
+  border: 1px solid;
+  margin-bottom: 1em;
+
+}
+
+textarea {
+  height: 7em;
+  text-align: left;
+}
+
+/* Liste mit ID bearbeitet*/
+
+#Liste {
+  list-style: square;
+  list-style-position: inside;
+}
+
+#Liste2 {
+  list-style: none;
+}
+
+/* Überschriften und Links mit Farbe versehen*/
+
+h1, h2, h3 {
+  color: gray;
+}
+
+a {
+  color: blueviolet;
+}
+
+/* Animation und Transitions hinzugefügt*/
+
+div.slideintext {
+  overflow: hidden;
+}
+
+div.slideintext>p {
+  transition: color 3s ease-in;
+  color: blueviolet;
+  animation-duration: 2s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 200%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+/*Media Queris / Website responsiv machen*/
+
+@media only screen and (min-width: 600px) {
+  body {
+    font-size: small;
+  }
+ 
+  @media only screen and (max-width: 600px) and (min-width: 2023px) {
+   body{
+     font-size: medium;
+   }
+  }
+  @media only screen and (min-width: 1000px) {
+    body{
+      font-size: large;
     }
-
-    @media only screen and (min-width: 1000px){
-     h1{
-       font-size: 2rem;
-       height: auto;
-       width: auto;
-     }
-     
-
-    /*Flussverhalten*/
-        div img{
-          float: left;
-        }
-    
-       div > b{
-          display: block;
-        }
-    
-         .flexbox > div{
-          background-color: white;
-          margin: auto;
-          padding: initial;
-    
-         }
-    
-      
+  }
+  /*Flussverhalten*/
+  div img {
+    float: left;
+  }
+  div>b {
+    display: block;
+  }
+  .flexbox>div {
+    background-color: white;
+    margin: auto;
+    padding: initial;
+  }
+   }

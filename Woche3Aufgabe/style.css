@@ -5,17 +5,43 @@ Body {
   /*width: 800px;  */
   text-align: center;
   margin: 0%;
- 
 }
 
-p{
+p, i, a, small {
   font-size: 21px;
+}
+
+
+video{
+  width: 650px;
+  height: 400px;
 }
 
 
 .Mynav {
   background-color: gray;
   overflow: hidden;
+}
+
+#Panorama{
+  width: 1150px;
+  height: 300px;
+ }
+
+ img{
+  width: 150px;
+  height: 200px;
+
+}
+
+#Icon{
+  width: 30px;
+  height: 30px;
+}
+
+#Losgehts{
+  width: 50px;
+  height: 50px;
 }
 
 /* Navigation an die rechte seite der Wesite heften */
@@ -122,31 +148,64 @@ div.slideintext>p {
   }
 }
 
+
 /*Media Queris / Website responsiv machen*/
 
-@media only screen and (min-width: 1024px) {
-  p, i, a, small {
-    font-size: 21px;
-  }
-}
 
-@media only screen and (min-width: 601px) and (max-width: 1023px) {
+  @media only screen and (min-width: 601px) and (max-width: 1023px) { 
   p, i, a, small {
-    font-size: 13px;
+    font-size: 18px;
   }
-}
 
-@media only screen and (max-width: 600x) {
-  p, i, a, small, ul, li{
-    font-size: 11px;
+  video{
+    width: 450px;
+    height: 300px;
   }
-  .Mynav{
-    padding: 13px 15px;
-  border-bottom: 8px;
-  font-size: 24px;
+  #Panorama{
+    width: 750px;
+    height: 200px;
+   }
+ 
+} 
+
+@media only screen and (max-width: 600px) {
+  p, i, a, small, ul, li {
+    font-size: 15px;
   }
-  
+  h1{
+    font-size: 20px;
+  }
+
+  h2{
+    font-size: 18px;
+  }
+
+  video{
+    width: 250px;
+    height: 200px;
+  }
+
+  img{
+    width: 150px;
+    height: 200px;
+  }
+  div.img{
+    width: 400px;
+    height: 200px;
+  }
+#Panorama{
+  width: 350px;
+  height: 100px;
+ }
+
+  form {
+    background-color: grey;
+    width: 300px;
+    padding: 9px;
+    border: 1px solid gray;
+
 }
+ }
 
 /*Flussverhalten*/
 
@@ -169,3 +228,4 @@ div>b {
 div.Absätze {
   display: block;
 }
+

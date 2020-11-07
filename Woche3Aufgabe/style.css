@@ -4,7 +4,14 @@ Body {
   font-family: sans-serif;
   /*width: 800px;  */
   text-align: center;
+  margin: 0%;
+ 
 }
+
+p{
+  font-size: 21px;
+}
+
 
 .Mynav {
   background-color: gray;
@@ -17,10 +24,10 @@ Body {
   float: right;
   color: white;
   text-align: right;
-  padding: 8px 10px;
-  border-bottom: 3px;
+  padding: 11px 13px;
+  border-bottom: 6px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 22px;
 }
 
 /* Farbe der Navigation wenn man drüber fährt*/
@@ -63,7 +70,6 @@ input {
   width: 300px;
   border: 1px solid;
   margin-bottom: 1em;
-
 }
 
 textarea {
@@ -118,31 +124,43 @@ div.slideintext>p {
 
 /*Media Queris / Website responsiv machen*/
 
-@media only screen and (min-width: 600px) {
-  body {
-    font-size: small;
+@media only screen and (min-width: 1024px) {
+  p, i, a, small {
+    font-size: 21px;
   }
- 
-  @media only screen and (max-width: 600px) and (min-width: 2023px) {
-   body{
-     font-size: medium;
-   }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1023px) {
+  p, i, a, small {
+    font-size: 13px;
   }
-  @media only screen and (min-width: 1000px) {
-    body{
-      font-size: large;
-    }
+}
+
+@media only screen and (max-width: 600x) {
+  p, i, a, small{
+    font-size: 1px;
   }
-  /*Flussverhalten*/
-  div img {
-    float: left;
-  }
-  div>b {
-    display: block;
-  }
-  .flexbox>div {
-    background-color: white;
-    margin: auto;
-    padding: initial;
-  }
-   }
+  
+}
+
+/*Flussverhalten*/
+
+div img {
+  float: left;
+}
+
+div>b {
+  display: block;
+}
+
+.flexbox>div {
+  background-color: white;
+  margin: auto;
+  padding: initial;
+}
+
+/* Br Tags Zeilenumbruch */
+
+div.Absätze {
+  display: block;
+}

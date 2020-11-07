@@ -7,10 +7,21 @@ Body {
   margin: 0%;
 }
 
-p, i, a, small {
+p, i, a, small, ul, li {
   font-size: 21px;
 }
 
+h1{
+  font-size: 30px;
+}
+
+h2{
+  font-size: 27px;
+}
+
+h3{
+  font-size: 23px;
+}
 
 video{
   width: 650px;
@@ -50,10 +61,10 @@ video{
   float: right;
   color: white;
   text-align: right;
-  padding: 11px 13px;
-  border-bottom: 6px;
+  padding: 10px 12px;
+  border-bottom: 5px;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 21px;
 }
 
 /* Farbe der Navigation wenn man drüber fährt*/

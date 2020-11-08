@@ -180,7 +180,7 @@ div.slideintext>p {
 } 
 
 @media only screen and (max-width: 600px) {
-  p, i, a, small, ul, li {
+  p, i, a, small, ul, li, em, u, b {
     font-size: 15px;
   }
   h1{

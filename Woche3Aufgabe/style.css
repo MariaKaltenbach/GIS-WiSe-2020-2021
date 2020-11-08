@@ -181,7 +181,7 @@ div.slideintext>p {
 
 @media only screen and (max-width: 600px) {
   p, i, a, small, ul, li, em, u, b {
-    font-size: 15px;
+    font-size: 14px;
   }
   h1{
     font-size: 20px;
@@ -211,9 +211,9 @@ div.slideintext>p {
 
   form {
     background-color: grey;
-    width: 300px;
+    width: 325px;
     padding: 9px;
-    border: 1px solid gray;
+    border: 1x solid gray;
 
 }
  }

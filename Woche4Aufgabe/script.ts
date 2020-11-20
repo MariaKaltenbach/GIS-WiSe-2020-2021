@@ -1,25 +1,28 @@
 console.log("Hallo Welt!");
 
-/*function a1(): void {
+// Aufgabe 1
+/*
+function a1(): void {
     let x: string = "Alles";
-    console.log(x);
-    func1();
-    func2();
+    console.log();
+    func1(x);
+    func2(x);
     console.log(x + " " + "Logo!");
 }
 
 a1();
 
-
-function func1(): void {
-    console.log("Alles" + " " + "Klar?");
+function func1(x: string ): void {
+    console.log(x + " " + "Klar?");
 
 }
 
-function func2(): void {
-    console.log("Alles" + " " + "Gute!");
+function func2(x: string): void {
+    console.log(x + " " + "Gute!");
 }
 
+
+// Aufgabe 2
 
 function a2(): void {
     let i: number = 9;
@@ -31,6 +34,8 @@ function a2(): void {
 }
 
 a2();
+
+// Aufgabe 4
 
 let x: string = "Hallo";
 console.log(x);
@@ -57,6 +62,8 @@ function func3(): void {
 let x: number = 6;
 let y: number = 3;
 
+//Aufgabe 5 a
+
 function multiply(x: number, y: number): void {
     let z: number = x * y;
 
@@ -64,7 +71,7 @@ function multiply(x: number, y: number): void {
 }
 multiply(x, y);
 
-
+//Aufgabe 5 b
 
 function max(x: number, y: number): void {
     if (x < y) {
@@ -75,6 +82,8 @@ function max(x: number, y: number): void {
     }
 }
 max(x, y);
+
+//Aufgabe 5 c
 
 function schleife(): void {
     let i: number = 1;
@@ -89,7 +98,7 @@ function schleife(): void {
 schleife();
 
 
-
+//Aufgabe 5 d
 
 function getRandom(): void {
 
@@ -103,6 +112,8 @@ function getRandom(): void {
 }
 
 getRandom();
+
+//Aufgabe 5 e
 
 let n: number = 5;
 let e: string;
@@ -123,14 +134,25 @@ function factorial(n: number): void {
 }
 
 factorial(n);
-*/
+
+//Aufgabe 5 f
 
 function leapyears(): void {
 
-    for (let i: number = 1900; i < 2020; i++)
-    
-    if (i )
+    for (let schaltjahr: number = 1900; schaltjahr < 2021; schaltjahr++) {
+        if (schaltjahr % 4 == 0 && schaltjahr % 100 != 0) {
+            console.log(schaltjahr);
+        }
+        else if (schaltjahr % 400 == 0) {
+            console.log(schaltjahr);
+        }
+    }
 }
+
+leapyears();
+*/
+
+// Aufgabe 6 a
 /*
 function string(): void {
     let s: string = "";
@@ -142,6 +164,7 @@ function string(): void {
 
 string();
 
+// Aufageb 6 b
 
 function fizz(): void {
     for (let i: number = 0; i < 100; i++) {
@@ -162,6 +185,7 @@ function fizz(): void {
 
 fizz();
 
+// Aufgabe 6 c
 
 function fizzBuzz(): void {
     for (let i: number = 0; i < 100; i++) {
@@ -169,38 +193,43 @@ function fizzBuzz(): void {
             console.log("FizzBuzz");
         }
 
-        else if (1 % 3 == 0) {
+        else if (i % 3 == 0) {
             console.log("Fizz");
         }
 
-        else if (1 % 5 == 0) {
+        else if (i % 5 == 0) {
             console.log("Buzz");
         }
 
         else {
-            console.log(1);
+            console.log(i);
         }
     }
 }
 fizzBuzz();
+ */
+/*
 
-
+// Aufagbe 6 d
+*/
 function schachbrett(): string {
     let brett: string = "";
     let leerzeichen: string = " ";
 
     for (let laenge: number = 0; laenge < 8; laenge++) {
-        for (let breite: number = 0; breite < 8; breite++)
+        for (let breite: number = 0; breite < 8; breite++) {
             if (leerzeichen == "#") {
                 brett = brett + "#";
                 leerzeichen = " ";
+
+                
             }
             else {
                 brett = brett + "#";
                 leerzeichen = " ";
             }
+        }
     }
-
     brett = brett + "\n";
     if (leerzeichen == "#") {
         leerzeichen = " ";
@@ -210,12 +239,12 @@ function schachbrett(): string {
     }
     console.log(brett);
     return brett;
+
+
+
 }
 
+
 schachbrett();
-
-
-*/
-
 
 

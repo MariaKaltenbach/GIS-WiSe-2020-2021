@@ -4,25 +4,72 @@
 
 <head>
     <meta charset="utf-8">
-    <mata naame="viewport" content="width=device-width, initial-scale=1.0">
-
+    <mata name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Woche6</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="script.js" defer></script>
 
+
+
 </head>
 
 <body>
-    <button>
-    new
-</button>
-    <button>
-    refresh
-</button>
 
-    <div id="fillThis">
+    <h1> Herzlich Wilkommen auf der Ice-for-little-price Website </h1>
 
+    <h2> Hier können Sie sich Ihren eigenen Eiscreationen zusammen stellen und diese bei uns abholen!</h2>
+    <div class="Preisliste">
+        <p> Preisliste:
+            <ul>
+                <li> Eiskugel&nbsp;&nbsp;&nbsp;&nbsp;1,20 €</li>
+                <li> Waffel&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0,70 €</li>
+                <li> Streusel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0,20 €</li>
+            </ul>
+        </p>
     </div>
+
+    <p><b>Wähle Sie hier Ihr Eis aus und drüchen Sie danach unten auf bestätigen um Ihr Eis in den warenkorb zu machen!</b></p>
+    <div class="Auwahlmöglichkeiten">
+        <label> 
+            Streusel:
+            <br>
+            <select>
+                <option>Keine</option>
+                <option>Zuckersteusel</option>
+                <option>Schokostreusel</option>
+                <option>Weißeschokostreusel</option>
+            </select>
+        </label>
+        <br>
+        <label>
+            Eiskugel:
+            <br>
+            <select> 
+                <option>Keine</option>
+                <option>Schokolade</option>
+                <option>Vanille</option>
+                <option>Erdbeere</option>
+            </select>
+        </label>
+        <br>
+        <label> 
+            Waffel:
+            <br>
+            <select>
+                <option>Keine</option>
+                <option>Schokolade</option>
+                <option>Vanille</option>
+                <option>Haselnuss</option>
+            </select>
+        </label>
+    </div>
+    <br>
+    <br>
+    <br>
+    <canvas id="myEiscreme" width="500px" height="700px"></canvas>
+    <br>
+    <button> Bestätigen </button>
+    <div id="fillThis"></div>
 </body>
 
 </html>

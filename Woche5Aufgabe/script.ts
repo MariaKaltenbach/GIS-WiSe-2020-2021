@@ -84,7 +84,7 @@ showInfo();
 
 // Aufgabe 3 a 
 
-let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myFirstCanvas");
+/*let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myFirstCanvas");
 
 let context: CanvasRenderingContext2D = canvas.getContext("2d");
 

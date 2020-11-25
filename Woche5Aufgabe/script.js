@@ -80,26 +80,39 @@ showInfo();
 
 */
 // Aufgabe 3 a 
-let canvas = document.getElementById("myFirstCanvas");
-let context = canvas.getContext("2d");
+/*let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myFirstCanvas");
+
+let context: CanvasRenderingContext2D = canvas.getContext("2d");
+
+
 context.lineWidth = 3;
+
 context.fillStyle = "green";
 context.fillRect(0, 200, 500, 150);
 context.strokeRect(0, 200, 500, 150); //Wiese
+
 context.fillStyle = "lightblue";
 context.fillRect(0, 0, 500, 200);
-context.strokeRect(0, 0, 500, 200); //Himmel
+context.strokeRect(0, 0, 500, 200);  //Himmel
+
+
 // Wall
 context.strokeRect(75, 140, 150, 110);
 context.clearRect(75, 140, 150, 110);
+
 // Door
 context.fillStyle = "#000";
 context.fillRect(130, 190, 40, 60);
+
 //tree
 context.fillStyle = "brown";
 context.fillRect(280, 140, 30, 150);
+
+
 // Roof
+
 context.beginPath();
+
 context.moveTo(50, 140);
 context.lineTo(150, 60);
 context.lineTo(250, 140);
@@ -108,6 +121,8 @@ context.fillStyle = "grey";
 context.fill();
 context.closePath();
 context.stroke();
+
+
 //baum krone
 context.beginPath();
 context.moveTo(170, 80);
@@ -123,7 +138,9 @@ context.fillStyle = "green";
 context.fill();
 context.strokeStyle = "lightgreen";
 context.stroke();
+
 //clouds
+
 /*
 context.fillRect(10, 10, 500, 1);
 //context.fillRect(20, 20, 500, 500);  //Ausgefüllte Form rechteck/quadrat

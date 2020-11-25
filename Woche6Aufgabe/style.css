@@ -1,0 +1,29 @@
+body {
+    background-color: lightblue;
+    text-align: center;
+}
+
+h1 {
+    font-family: sans-serif;
+    color: blue;
+}
+
+h2 {
+    font-family: sans-serif;
+    color: grey;
+}
+
+ul,
+li,
+p {
+    list-style: none;
+    font-size: 20px;
+}
+
+.Preisliste {
+    background-color: grey;
+    margin-left: 970px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: blue;
+}

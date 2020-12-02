@@ -1,36 +1,4 @@
-// Aufgabe 1
-/*
-let buttons: HTMLCollectionOf<HTMLButtonElement> = document.getElementsByTagName("button");
 
-buttons[0].addEventListener("click", makeNew);
-buttons[1].addEventListener("click", reset);
-
-function makeNew(_e: Event): void {
-    let div: HTMLDivElement = document.createElement("div");
-    div.style.backgroundColor = "black";
-    div.style.height = "50px";
-    div.style.width = "50px";
-    div.style.marginLeft = (Math.random() * 200).toString() + "px";
-    document.getElementById("fillThis")?.appendChild(div);
-}
-
-function reset(_e: Event): void {
-let parent: HTMLDivElement = <HTMLDivElement>document.getElementById("fillThis");
-parent.innerHTML = "";
-}
-*/
-
-/*     <button>
-    new
-</button>
-    <button>
-    refresh
-</button>
-
-    <div id="fillThis">
-
-    </div>
-*/
 
 // Aufgabe 2
 
@@ -42,6 +10,7 @@ namespace Eisladen {
         geschmack: string;
         preis: number;
         name: string;
+        farbe: string;
 
 
     }
@@ -50,24 +19,21 @@ namespace Eisladen {
 
     export interface Waffel extends Lebensmittel {
 
-        farbe: string;
-    }
 
+    }
 
 
     export interface Eiskugel extends Lebensmittel {
 
-        farbe: string;
+
     }
 
 
 
     export interface Streusel extends Lebensmittel {
 
-        farbe: string;
+
     }
-
-
 
 
     let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myEiscreme");
@@ -75,12 +41,10 @@ namespace Eisladen {
 
     context.lineWidth = 3;
 
-
-    function icecream(colorString2: string): void {
+    function icecream(colorString: string): void {
 
         context.beginPath();
-        context.fillStyle = colorString2;
-        context.strokeStyle = colorString2;
+        context.fillStyle = colorString;
         context.arc(150, 130, 120, 0, 2 * Math.PI);
         context.closePath();
         context.fill();
@@ -89,12 +53,22 @@ namespace Eisladen {
     }
 
 
+    /* function icecream(colorString: string): void {
+ 
+         context.beginPath();
+         context.fillStyle = colorString;
+         context.arc(300, 350, 120, 0, 2 * Math.PI);
+         context.closePath();
+         context.fill();
+         context.stroke();
+ 
+     }*/
 
-    function cone(colorString1: string): void {
+
+    function cone(colorString: string): void {
 
         context.beginPath();
-        context.fillStyle = colorString1;
-        context.strokeStyle = colorString1;
+        context.fillStyle = colorString;
         context.moveTo(50, 200);
         context.lineTo(150, 600);
         context.lineTo(250, 200);
@@ -104,12 +78,23 @@ namespace Eisladen {
 
     }
 
+    /*function cone(colorString: string): void {
 
-
-
-    function steusel(colorString: string): void {
         context.beginPath();
-        context.strokeStyle = colorString;
+        context.fillStyle = colorString;
+        context.moveTo(500, 200);
+        context.lineTo(600, 600);
+        context.lineTo(700, 200);
+        context.closePath();
+        context.fill();
+        context.stroke();
+
+    }*/
+
+
+    function sprinkles(colorString: string): void {
+        context.beginPath();
+        context.fillStyle = colorString;
         context.moveTo(80, 140);
         context.lineTo(100, 150);
         context.closePath();
@@ -155,12 +140,15 @@ namespace Eisladen {
 
 
     function neuZeichnen(): void {
+        
         icecream(localStorage.getItem("eiskugelFarbe"));
+        sprinkles(localStorage.getItem("streuselFarbe"));
         cone(localStorage.getItem("waffelFarbe"));
-        steusel(localStorage.getItem("streuselFarbe"));
     }
 
     neuZeichnen();
+
+    // Daten aus der data.ts laden 
 
     let waffel: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
 
@@ -179,6 +167,8 @@ namespace Eisladen {
         neuZeichnen();
     }
 
+    // Daten aus der data.ts laden 
+
     let eiskugel: HTMLSelectElement = <HTMLSelectElement>document.getElementById("eiskugel");
 
     for (let i: number = 0; i < eiskugelVariationen.length; i++) {
@@ -196,6 +186,8 @@ namespace Eisladen {
         neuZeichnen();
     }
 
+
+    // Daten aus der data.ts laden 
 
     let streusel: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
 
@@ -216,6 +208,28 @@ namespace Eisladen {
     }
 
 
+    /*localStorage.setItem("Streusel", streuselVariationen[0].farbe);
+    streusel.value = localStorage.getItem("Streusel");
+    localStorage.setItem("Eiskugel", eiskugelVariationen[0].farbe);
+    eiskugel.value = localStorage.getItem("Eiskugfel");
+    localStorage.setItem("Waffel", waffelVariationen[0].farbe);
+    waffel.value = localStorage.getItem("Waffel");*/
+
+    function canvas1(): void {
+        let waffelFarbe: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("waffelFarbe");
+        waffelFarbe.setAttribute("src", localStorage.getItem("Waffel"));
+
+        let eiskugelFarbe: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("eiskugelFarbe");
+        eiskugelFarbe.setAttribute("src", localStorage.getItem("Eiskugel"));
+
+        let streuselFarbe: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("streuselFarbe");
+        streuselFarbe.setAttribute("src", localStorage.getItem("Streusel"));
+
+
+    }
+    canvas1();
+
+    //Bestätigen Button um auf die "Ansicht" (Eisladenseite) zu kommen
 
     let button: HTMLCollectionOf<HTMLButtonElement> = document.getElementsByTagName("button");
 
@@ -226,99 +240,4 @@ namespace Eisladen {
         parent.innerHTML = "";
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*document.querySelector("#Button5").addEventListener("click", deleteLocalStorage);
-    function deleteLocalStorage(): void {
-        localStorage.clear();
-    }
-
-    let myJason2: string = myJason2;
-    let myObj2: Streusel[] = JSON.parse(myJason2);
-    let myJason1: string = myJason1;
-    let myObj1: Eiskugel[] = JSON.parse(myJason1);
-    let myJason: string = myJason;
-    let myObj: Waffel[] = JSON.parse(myJason);
-
-    let myObjONE: [] = [localStorage.getItem("Streusel"), localStorage.getItem("Eiskugel"), localStorage.getItem("Waffel")];
-
-
-    let tempString: string[] = window.location.pathname.split("/");
-    function open(): void {
-        switch (tempString[tempString.length - 1]) {
-            case "index.html":
-                canvas1(myObj);
-                break;
-
-            case "index.html":
-                canvas1(myObj1);
-                break;
-
-            case "index.html":
-                canvas1(myObj2);
-                break;
-
-            case "Eisladen.html":
-                console.log(localStorage.getItem("Streusel"));
-                console.log(localStorage.getItem("Eiskugel"));
-                console.log(localStorage.getItem("Waffel"));
-                canvas1(myObj3);
-        }
-    }
-    open();
-
-    function canvas1(_info: Eisladen[]): void {
-        let selectElement: HTMLDivElement = <HTMLDivElement>document.getElementsByClassName("container")[0];
-
-        for (let i: number = 0; i < _info.length; i++) {
-            let div: HTMLDivElement = <HTMLDivElement>document.createElement("div");
-
-            selectElement.appendChild(div);
-
-            let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement("img");
-            optionImage.src = _info[i].img;
-            div.appendChild(optionImage);
-            optionImage.addEventListener("click", auswahlZurückgeben);
-        }
-    }
-
-
-    function auswahlZurückgeben(_event: Event): void {
-        let target: HTMLImageElement = <HTMLImageElement>_event.currentTarget;
-        let temporString: string[] = target.src.split("/");
-        //console.log("Du hast auf " + temporString[temporString.length - 1] + " geklickt");
-
-        switch (tempString[tempString.length - 1]) {
-            case "indes.html":
-                localStorage.setItem("Streusel", temporString[temporString.length - 1]);
-                break;
-
-            case "index.html":
-                localStorage.setItem("Eiskugel", temporString[temporString.length - 1]);
-                break;
-
-            case "index.html":
-                localStorage.setItem("Waffel", temporString[temporString.length - 1]);
-                break;
-        }
-    }*/
-
-
 }
-

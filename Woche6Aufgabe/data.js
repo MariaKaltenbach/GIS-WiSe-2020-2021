@@ -19,7 +19,7 @@ var Eisladen;
     console.log(myJSON1);
     Eisladen.streuselVariationen = [
         { geschmack: "Zucker", preis: 0.20, name: "Zuckerstreusel", farbe: "pink" },
-        { geschmack: "Schokolade", preis: 0.20, name: "Schokostreusel", farbe: "braum" },
+        { geschmack: "Schokolade", preis: 0.20, name: "Schokostreusel", farbe: "braun" },
         { geschmack: "Weißeschokolade", preis: 0.20, name: "Weißseschokostreusel", farbe: "beige" }
     ];
     let myStreusel = Eisladen.streuselVariationen;

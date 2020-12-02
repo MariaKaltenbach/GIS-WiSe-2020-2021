@@ -37,18 +37,19 @@ var Eisladen;
     let canvas = document.getElementById("myEiscreme");
     let context = canvas.getContext("2d");
     context.lineWidth = 3;
-    function icecream() {
+    function icecream(colorString2) {
         context.beginPath();
-        context.fillStyle = "lightyellow";
+        context.fillStyle = colorString2;
+        context.strokeStyle = colorString2;
         context.arc(150, 130, 120, 0, 2 * Math.PI);
         context.closePath();
         context.fill();
         context.stroke();
     }
-    icecream();
-    function cone() {
+    function cone(colorString1) {
         context.beginPath();
-        context.fillStyle = "beige";
+        context.fillStyle = colorString1;
+        context.strokeStyle = colorString1;
         context.moveTo(50, 200);
         context.lineTo(150, 600);
         context.lineTo(250, 200);
@@ -56,9 +57,9 @@ var Eisladen;
         context.fill();
         context.stroke();
     }
-    cone();
-    function steusel() {
+    function steusel(colorString) {
         context.beginPath();
+        context.strokeStyle = colorString;
         context.moveTo(80, 140);
         context.lineTo(100, 150);
         context.closePath();
@@ -94,39 +95,50 @@ var Eisladen;
         context.closePath();
         context.stroke();
     }
-    steusel();
+    function neuZeichnen() {
+        icecream(localStorage.getItem("eiskugelFarbe"));
+        cone(localStorage.getItem("waffelFarbe"));
+        steusel(localStorage.getItem("streuselFarbe"));
+    }
+    neuZeichnen();
     let waffel = document.getElementById("waffel");
     for (let i = 0; i < Eisladen.waffelVariationen.length; i++) {
         let newOptionElement = document.createElement("OPTION");
         newOptionElement.innerText = Eisladen.waffelVariationen[i].name;
-        newOptionElement.setAttribute("value", Eisladen.waffelVariationen[i].name + "_valueTag");
+        newOptionElement.setAttribute("value", Eisladen.waffelVariationen[i].farbe);
         waffel.appendChild(newOptionElement);
     }
     waffel.addEventListener("change", waffelVariationenChanged);
     function waffelVariationenChanged(_e) {
         console.log(_e.target.value);
+        localStorage.setItem("waffelFarbe", _e.target.value);
+        neuZeichnen();
     }
     let eiskugel = document.getElementById("eiskugel");
     for (let i = 0; i < Eisladen.eiskugelVariationen.length; i++) {
         let newOptionElement = document.createElement("OPTION");
         newOptionElement.innerText = Eisladen.eiskugelVariationen[i].name;
-        newOptionElement.setAttribute("value", Eisladen.eiskugelVariationen[i].name + "_valueTag");
+        newOptionElement.setAttribute("value", Eisladen.eiskugelVariationen[i].farbe);
         eiskugel.appendChild(newOptionElement);
     }
     eiskugel.addEventListener("change", eiskugelVariationenChanged);
     function eiskugelVariationenChanged(_e) {
         console.log(_e.target.value);
+        localStorage.setItem("eiskugelFarbe", _e.target.value);
+        neuZeichnen();
     }
     let streusel = document.getElementById("streusel");
     for (let i = 0; i < Eisladen.streuselVariationen.length; i++) {
         let newOptionElement = document.createElement("OPTION");
         newOptionElement.innerText = Eisladen.streuselVariationen[i].name;
-        newOptionElement.setAttribute("value", Eisladen.streuselVariationen[i].name + "_valueTag");
+        newOptionElement.setAttribute("value", Eisladen.streuselVariationen[i].farbe);
         streusel.appendChild(newOptionElement);
     }
     streusel.addEventListener("change", streuselVariationenChanged);
     function streuselVariationenChanged(_e) {
         console.log(_e.target.value);
+        localStorage.setItem("streuselFarbe", _e.target.value);
+        neuZeichnen();
     }
     let button = document.getElementsByTagName("button");
     button[0].addEventListener("click", bestätigen);
@@ -134,5 +146,79 @@ var Eisladen;
         let parent = document.getElementById("fillThis");
         parent.innerHTML = "";
     }
+    /*document.querySelector("#Button5").addEventListener("click", deleteLocalStorage);
+    function deleteLocalStorage(): void {
+        localStorage.clear();
+    }
+
+    let myJason2: string = myJason2;
+    let myObj2: Streusel[] = JSON.parse(myJason2);
+    let myJason1: string = myJason1;
+    let myObj1: Eiskugel[] = JSON.parse(myJason1);
+    let myJason: string = myJason;
+    let myObj: Waffel[] = JSON.parse(myJason);
+
+    let myObjONE: [] = [localStorage.getItem("Streusel"), localStorage.getItem("Eiskugel"), localStorage.getItem("Waffel")];
+
+
+    let tempString: string[] = window.location.pathname.split("/");
+    function open(): void {
+        switch (tempString[tempString.length - 1]) {
+            case "index.html":
+                canvas1(myObj);
+                break;
+
+            case "index.html":
+                canvas1(myObj1);
+                break;
+
+            case "index.html":
+                canvas1(myObj2);
+                break;
+
+            case "Eisladen.html":
+                console.log(localStorage.getItem("Streusel"));
+                console.log(localStorage.getItem("Eiskugel"));
+                console.log(localStorage.getItem("Waffel"));
+                canvas1(myObj3);
+        }
+    }
+    open();
+
+    function canvas1(_info: Eisladen[]): void {
+        let selectElement: HTMLDivElement = <HTMLDivElement>document.getElementsByClassName("container")[0];
+
+        for (let i: number = 0; i < _info.length; i++) {
+            let div: HTMLDivElement = <HTMLDivElement>document.createElement("div");
+
+            selectElement.appendChild(div);
+
+            let optionImage: HTMLImageElement = <HTMLImageElement>document.createElement("img");
+            optionImage.src = _info[i].img;
+            div.appendChild(optionImage);
+            optionImage.addEventListener("click", auswahlZurückgeben);
+        }
+    }
+
+
+    function auswahlZurückgeben(_event: Event): void {
+        let target: HTMLImageElement = <HTMLImageElement>_event.currentTarget;
+        let temporString: string[] = target.src.split("/");
+        //console.log("Du hast auf " + temporString[temporString.length - 1] + " geklickt");
+
+        switch (tempString[tempString.length - 1]) {
+            case "indes.html":
+                localStorage.setItem("Streusel", temporString[temporString.length - 1]);
+                break;
+
+            case "index.html":
+                localStorage.setItem("Eiskugel", temporString[temporString.length - 1]);
+                break;
+
+            case "index.html":
+                localStorage.setItem("Waffel", temporString[temporString.length - 1]);
+                break;
+        }
+    }*/
 })(Eisladen || (Eisladen = {}));
 //# sourceMappingURL=script.js.map

@@ -3,7 +3,7 @@ var Eisladen;
 (function (Eisladen) {
     Eisladen.waffelVariationen = [
         { geschmack: "Schokolade", preis: 0.70, name: "Schokowaffel", farbe: "black" },
-        { geschmack: "Vanille", preis: 0.70, name: "Vanillewaffel", farbe: "yellow" },
+        { geschmack: "Vanille", preis: 0.70, name: "Vanillewaffel", farbe: "beige" },
         { geschmack: "Haselnuss", preis: 0.70, name: "Haselnusswaffel", farbe: "brown" }
     ];
     let myWaffel = Eisladen.waffelVariationen;
@@ -20,7 +20,7 @@ var Eisladen;
     Eisladen.streuselVariationen = [
         { geschmack: "Zucker", preis: 0.20, name: "Zuckerstreusel", farbe: "pink" },
         { geschmack: "Schokolade", preis: 0.20, name: "Schokostreusel", farbe: "brown" },
-        { geschmack: "Weißeschokolade", preis: 0.20, name: "Weißseschokostreusel", farbe: "white" }
+        { geschmack: "Weißeschokolade", preis: 0.20, name: "Weißeschokostreusel", farbe: "white" }
     ];
     let myStreusel = Eisladen.streuselVariationen;
     let myJSON2 = JSON.stringify(myStreusel);

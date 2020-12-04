@@ -158,5 +158,12 @@ var Eisladen;
         cone(localStorage.getItem("waffelFarbe"), 40, 100);
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
     }
+    console.log("Start");
+    async function communicate(_url) {
+        let response = await fetch(_url);
+        console.log("Response", response);
+    }
+    communicate("https://hs-furtwangen.github.io/GIS-WiSe-2020-2021/content/L2.5/test.txt");
+    console.log("End");
 })(Eisladen || (Eisladen = {}));
 //# sourceMappingURL=script.js.map

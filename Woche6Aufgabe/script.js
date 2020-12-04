@@ -2,13 +2,18 @@
 //namespace um Daten aus der data.ts zu exportieren
 var Eisladen;
 (function (Eisladen) {
+    //regionend
+    //bekommt den Pfad der Seite auf welcher man sich befindet
     let path = window.location.pathname;
     let page = path.split("/").pop();
+    //region Canvas
     //mit Canvas zeichnen
     let canvas = document.getElementById("myEiscreme");
     let context = canvas.getContext("2d");
     context.lineWidth = 3;
-    //Eiskugel zeichnen
+    //Eiskugel zeichnen Ergebnisseite
+    // x und y Koordinaten um die Position auf dern index.html seite verändern zu können
+    //color String damit sich die Farbe bei der auswahl ändert
     function icecream(_colorString, _x, _y) {
         context.beginPath();
         context.fillStyle = _colorString;
@@ -18,7 +23,7 @@ var Eisladen;
         context.fill();
         context.stroke();
     }
-    // Waffel zeichnen
+    // Waffel zeichnen Ergebnisseite
     function cone(_colorString, _x, _y) {
         context.beginPath();
         context.fillStyle = _colorString;
@@ -30,7 +35,7 @@ var Eisladen;
         context.fill();
         context.stroke();
     }
-    //streusel zeichnen
+    //streusel zeichnen Ergebnisseite
     function sprinkles(_colorString, _x, _y) {
         context.beginPath();
         context.fillStyle = _colorString;
@@ -70,100 +75,109 @@ var Eisladen;
         context.closePath();
         context.stroke();
     }
+    //regionend
+    //region: Abfrage (welche Seite geöffnet ist)
+    //Canvas explizit auf der Ergebnis seite zeichnen
     if (page == "Ergebnis.html") {
         icecream(localStorage.getItem("eiskugelFarbe"), 0, 0); //Ergebnis der Eiscreme wird ausgegeben
         cone(localStorage.getItem("waffelFarbe"), 0, 0); //Ergenis der Eiscreme wird ausgegeben
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0); //Ergenbis der eiscreme wird ausgegeben
+        serverAnfrage("https://gis-communication.herokuapp.com");
     }
+    //Canvas auf der index.html seite zeichnen 
     if (page == "index.html") {
         neuZeichnen();
     }
-    //funnction um die for-Schleifen zu verbinden, damit sich der code nicht so oft widerholt
-    /*function setupSelection(_selectElement: HTMLSelectElement, _data: any[],) {
-
-        function selectionChanged(_e: Event) {
-            document.getElementById("waffel").setAttribute("Waffel", "farbe");
-        }
-
-        function selectionChanged1(_e: Event) {
-            document.getElementById("eiskugel").setAttribute("Eiskugel", "farbe");
-        }
-
-        function selectionChanged2(_e: Event) {
-            document.getElementById("streusel").setAttribute("Streusel", "farbe");
-        }
-
-    }
-*/
+    //regionend
+    //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
     // Daten im html ausgeben lassen damit sie auf der Seite angeziegt werden
-    let waffel = document.getElementById("waffel");
+    let waffelSelect = document.getElementById("waffel");
     // Daten aus der data.ts laden WAFFEL
     for (let i = 0; i < Eisladen.waffelVariationen.length; i++) {
         let newOptionElement = document.createElement("OPTION");
         newOptionElement.innerText = Eisladen.waffelVariationen[i].name;
         newOptionElement.setAttribute("value", Eisladen.waffelVariationen[i].farbe);
-        waffel.appendChild(newOptionElement);
+        waffelSelect.appendChild(newOptionElement);
     }
-    waffel.addEventListener("change", waffelVariationenChanged);
+    //Change Event, damit man die Auswahlmöglichkeiten ändern kann
+    waffelSelect.addEventListener("change", waffelVariationenChanged);
     function waffelVariationenChanged(_e) {
         console.log(_e.target.value);
         localStorage.setItem("waffelFarbe", _e.target.value);
         neuZeichnen();
     }
     //und diese im html ausgeben lassen damit sie auf der Seite angeziegt werden
-    let eiskugel = document.getElementById("eiskugel");
+    let eiskugelSelect = document.getElementById("eiskugel");
     // Daten aus der data.ts laden 
     for (let i = 0; i < Eisladen.eiskugelVariationen.length; i++) {
         let newOptionElement = document.createElement("OPTION");
         newOptionElement.innerText = Eisladen.eiskugelVariationen[i].name;
         newOptionElement.setAttribute("value", Eisladen.eiskugelVariationen[i].farbe);
-        eiskugel.appendChild(newOptionElement);
+        eiskugelSelect.appendChild(newOptionElement);
     }
-    eiskugel.addEventListener("change", eiskugelVariationenChanged);
+    //Change Event, damit man die Auswahlmöglichkeiten ändern kann
+    eiskugelSelect.addEventListener("change", eiskugelVariationenChanged);
     function eiskugelVariationenChanged(_e) {
         console.log(_e.target.value);
         localStorage.setItem("eiskugelFarbe", _e.target.value);
         neuZeichnen();
     }
     //und diese im html ausgeben lassen damit sie auf der Seite angeziegt werden
-    let streusel = document.getElementById("streusel");
+    let streuselSelect = document.getElementById("streusel");
     // Daten aus der data.ts laden 
     for (let i = 0; i < Eisladen.streuselVariationen.length; i++) {
         let newOptionElement = document.createElement("OPTION");
         newOptionElement.innerText = Eisladen.streuselVariationen[i].name;
         newOptionElement.setAttribute("value", Eisladen.streuselVariationen[i].farbe);
-        streusel.appendChild(newOptionElement);
+        streuselSelect.appendChild(newOptionElement);
     }
-    streusel.addEventListener("change", streuselVariationenChanged);
+    //Change Event, damit man die Auswahlmöglichkeiten ändern kann
+    streuselSelect.addEventListener("change", streuselVariationenChanged);
     function streuselVariationenChanged(_e) {
         console.log(_e.target.value);
         localStorage.setItem("streuselFarbe", _e.target.value);
         neuZeichnen();
     }
+    //endregion
+    //
     if (localStorage.getItem("streuselFarbe") == null) {
         localStorage.setItem("streuselFarbe", Eisladen.streuselVariationen[0].farbe);
     }
-    streusel.value = localStorage.getItem("streuselFarbe");
+    streuselSelect.value = localStorage.getItem("streuselFarbe");
     if (localStorage.getItem("eiskugelFarbe") == null) {
         localStorage.setItem("eiskugelFarbe", Eisladen.eiskugelVariationen[0].farbe);
     }
-    eiskugel.value = localStorage.getItem("eiskugelFarbe");
+    eiskugelSelect.value = localStorage.getItem("eiskugelFarbe");
     if (localStorage.getItem("waffelFarbe") == null) {
         localStorage.setItem("waffelFarbe", Eisladen.waffelVariationen[0].farbe);
     }
-    waffel.value = localStorage.getItem("waffelFarbe");
-    //Funktion damit die farbe sich ändert sobal man etwas auswählt
+    waffelSelect.value = localStorage.getItem("waffelFarbe");
+    //region Canvas
+    //Funktion damit die farbe sich ändert sobalt man etwas auswählt
+    //Canvas auf der index.html zeichnen, mit addierten werten um die position zu ändern
     function neuZeichnen() {
         icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
         cone(localStorage.getItem("waffelFarbe"), 40, 100);
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
     }
-    console.log("Start");
-    async function communicate(_url) {
+    //regionend
+    //region Server anfrage 
+    async function serverAnfrage(_url) {
+        let query = new URLSearchParams(localStorage);
+        _url = _url + "?" + query.toString();
         let response = await fetch(_url);
-        console.log("Response", response);
+        let serverNachricht = await response.json();
+        let serverAntwort = document.getElementById("serverAntwort");
+        let text = document.createElement("p");
+        if (serverNachricht.message !== undefined) {
+            text.innerText = serverNachricht.message;
+        }
+        if (serverNachricht.error !== undefined) {
+            text.setAttribute("style", "color:red");
+            text.innerText = serverNachricht.error;
+        }
+        serverAntwort.appendChild(text);
     }
-    communicate("https://hs-furtwangen.github.io/GIS-WiSe-2020-2021/content/L2.5/test.txt");
-    console.log("End");
+    //regionend
 })(Eisladen || (Eisladen = {}));
 //# sourceMappingURL=script.js.map

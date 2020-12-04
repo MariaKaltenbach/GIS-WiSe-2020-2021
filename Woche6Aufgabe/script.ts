@@ -15,10 +15,18 @@ namespace Eisladen {
 
     export interface Streusel extends Lebensmittel { }
 
+    //region Interface (Interface für Server Antwort)
+    interface ServerMessage {
+        message: string;
+        error: string;
+    }
+    //regionend
 
+    //bekommt den Pfad der Seite auf welcher man sich befindet
     let path: string = window.location.pathname;
     let page: string = path.split("/").pop();
 
+    //region Canvas
     //mit Canvas zeichnen
     let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myEiscreme");
     let context: CanvasRenderingContext2D = <CanvasRenderingContext2D>canvas.getContext("2d");
@@ -26,7 +34,9 @@ namespace Eisladen {
     context.lineWidth = 3;
 
 
-    //Eiskugel zeichnen
+    //Eiskugel zeichnen Ergebnisseite
+    // x und y Koordinaten um die Position auf dern index.html seite verändern zu können
+    //color String damit sich die Farbe bei der auswahl ändert
     function icecream(_colorString: string, _x: number, _y: number): void {
 
         context.beginPath();
@@ -41,7 +51,7 @@ namespace Eisladen {
 
 
 
-    // Waffel zeichnen
+    // Waffel zeichnen Ergebnisseite
     function cone(_colorString: string, _x: number, _y: number): void {
 
         context.beginPath();
@@ -57,7 +67,7 @@ namespace Eisladen {
     }
 
 
-    //streusel zeichnen
+    //streusel zeichnen Ergebnisseite
     function sprinkles(_colorString: string, _x: number, _y: number): void {
         context.beginPath();
         context.fillStyle = _colorString;
@@ -103,42 +113,28 @@ namespace Eisladen {
         context.closePath();
         context.stroke();
     }
+    //regionend
 
+    //region: Abfrage (welche Seite geöffnet ist)
+    //Canvas explizit auf der Ergebnis seite zeichnen
     if (page == "Ergebnis.html") {
 
         icecream(localStorage.getItem("eiskugelFarbe"), 0, 0);  //Ergebnis der Eiscreme wird ausgegeben
         cone(localStorage.getItem("waffelFarbe"), 0, 0);  //Ergenis der Eiscreme wird ausgegeben
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);  //Ergenbis der eiscreme wird ausgegeben
 
+        serverAnfrage("https://gis-communication.herokuapp.com");
     }
 
+    //Canvas auf der index.html seite zeichnen 
     if (page == "index.html") {
 
         neuZeichnen();
     }
+    //regionend
 
 
-
-    //funnction um die for-Schleifen zu verbinden, damit sich der code nicht so oft widerholt
-    /*function setupSelection(_selectElement: HTMLSelectElement, _data: any[],) {
-
-        function selectionChanged(_e: Event) {
-            document.getElementById("waffel").setAttribute("Waffel", "farbe");
-        }
-
-        function selectionChanged1(_e: Event) {
-            document.getElementById("eiskugel").setAttribute("Eiskugel", "farbe");
-        }
-
-        function selectionChanged2(_e: Event) {
-            document.getElementById("streusel").setAttribute("Streusel", "farbe");
-        }
-
-    }
-*/
-
-
-
+    //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
     // Daten im html ausgeben lassen damit sie auf der Seite angeziegt werden
     let waffelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
 
@@ -148,7 +144,9 @@ namespace Eisladen {
         newOptionElement.innerText = waffelVariationen[i].name;
         newOptionElement.setAttribute("value", waffelVariationen[i].farbe);
         waffelSelect.appendChild(newOptionElement);
+
     }
+    //Change Event, damit man die Auswahlmöglichkeiten ändern kann
     waffelSelect.addEventListener("change", waffelVariationenChanged);
 
     function waffelVariationenChanged(_e: Event): void {
@@ -168,7 +166,10 @@ namespace Eisladen {
         newOptionElement.innerText = eiskugelVariationen[i].name;
         newOptionElement.setAttribute("value", eiskugelVariationen[i].farbe);
         eiskugelSelect.appendChild(newOptionElement);
+
     }
+    //Change Event, damit man die Auswahlmöglichkeiten ändern kann
+
     eiskugelSelect.addEventListener("change", eiskugelVariationenChanged);
 
     function eiskugelVariationenChanged(_e: Event): void {
@@ -189,7 +190,10 @@ namespace Eisladen {
         newOptionElement.innerText = streuselVariationen[i].name;
         newOptionElement.setAttribute("value", streuselVariationen[i].farbe);
         streuselSelect.appendChild(newOptionElement);
+
     }
+    //Change Event, damit man die Auswahlmöglichkeiten ändern kann
+
     streuselSelect.addEventListener("change", streuselVariationenChanged);
 
     function streuselVariationenChanged(_e: Event): void {
@@ -197,7 +201,9 @@ namespace Eisladen {
         localStorage.setItem("streuselFarbe", (<HTMLOptionElement>_e.target).value);
         neuZeichnen();
     }
+    //endregion
 
+    //
 
     if (localStorage.getItem("streuselFarbe") == null) {
 
@@ -223,22 +229,38 @@ namespace Eisladen {
     waffelSelect.value = localStorage.getItem("waffelFarbe");
 
 
-
-
-    //Funktion damit die farbe sich ändert sobal man etwas auswählt
+    //region Canvas
+    //Funktion damit die farbe sich ändert sobalt man etwas auswählt
+    //Canvas auf der index.html zeichnen, mit addierten werten um die position zu ändern
     function neuZeichnen(): void {
 
         icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
         cone(localStorage.getItem("waffelFarbe"), 40, 100);
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
     }
+    //regionend
 
+    //region Server anfrage 
+    async function serverAnfrage(_url: string): Promise<void> {
 
-    async function loadDataFromJSON(_url: RequestInfo): Promise<Lebensmittel> {
+        let query: URLSearchParams = new URLSearchParams(localStorage);
+        _url = _url + "?" + query.toString();
         let response: Response = await fetch(_url);
-        let result: Lebensmittel = await response.json();
-        return result;
+        let serverNachricht: ServerMessage = await response.json();
+        let serverAntwort: HTMLElement = document.getElementById("serverAntwort");
+        let text: HTMLParagraphElement = document.createElement("p");
 
+        if (serverNachricht.message !== undefined) {
+            text.innerText = serverNachricht.message;
+        }
+
+        if (serverNachricht.error !== undefined) {
+            text.setAttribute("style", "color:red");
+            text.innerText = serverNachricht.error;
+        }
+        serverAntwort.appendChild(text);
     }
-    loadDataFromJSON("gis-communication.herokuapp.com");
+    //regionend
 }
+
+

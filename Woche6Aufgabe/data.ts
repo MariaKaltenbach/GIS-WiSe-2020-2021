@@ -31,6 +31,7 @@ namespace Eisladen {
     let myJSON2: string = JSON.stringify(myStreusel);
     console.log(myJSON2);
 
+    
 }
 
 

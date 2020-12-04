@@ -36,10 +36,6 @@
         margin-top: 50px;
     }
     
-    button {
-        font-size: 18px;
-    }
-    
     label {
         font-size: 18px;
     }
@@ -61,9 +57,6 @@
         div.Auswahlmöglichkeiten {
             font-size: 18px;
         }
-        button {
-            font-size: 18px;
-        }
     }
     
     @media only screen and (max-width: 600px) {
@@ -82,9 +75,6 @@
             margin-left: 190px;
             padding-top: 5px;
             padding-bottom: 5px;
-        }
-        button {
-            font-size: 14px;
         }
         label {
             font: 14px;

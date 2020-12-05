@@ -93,15 +93,15 @@ var Eisladen;
     // Daten im html ausgeben lassen damit sie auf der Seite angeziegt werden
     let waffelSelect = document.getElementById("waffel");
     // Daten aus der data.ts laden WAFFEL
-    for (let i = 0; i < Eisladen.waffelVariationen.length; i++) {
+    for (let i = 0; i < Eisladen.waffelVariation.length; i++) {
         let newOptionElement = document.createElement("OPTION");
-        newOptionElement.innerText = Eisladen.waffelVariationen[i].name;
-        newOptionElement.setAttribute("value", Eisladen.waffelVariationen[i].farbe);
+        newOptionElement.innerText = Eisladen.waffelVariation[i].name;
+        newOptionElement.setAttribute("value", Eisladen.waffelVariation[i].farbe);
         waffelSelect.appendChild(newOptionElement);
     }
     //Change Event, damit man die Auswahlmöglichkeiten ändern kann
-    waffelSelect.addEventListener("change", waffelVariationenChanged);
-    function waffelVariationenChanged(_e) {
+    waffelSelect.addEventListener("change", waffelVariationChanged);
+    function waffelVariationChanged(_e) {
         console.log(_e.target.value);
         localStorage.setItem("waffelFarbe", _e.target.value);
         neuZeichnen();
@@ -109,15 +109,15 @@ var Eisladen;
     //und diese im html ausgeben lassen damit sie auf der Seite angeziegt werden
     let eiskugelSelect = document.getElementById("eiskugel");
     // Daten aus der data.ts laden 
-    for (let i = 0; i < Eisladen.eiskugelVariationen.length; i++) {
+    for (let i = 0; i < Eisladen.eiskugelVariation.length; i++) {
         let newOptionElement = document.createElement("OPTION");
-        newOptionElement.innerText = Eisladen.eiskugelVariationen[i].name;
-        newOptionElement.setAttribute("value", Eisladen.eiskugelVariationen[i].farbe);
+        newOptionElement.innerText = Eisladen.eiskugelVariation[i].name;
+        newOptionElement.setAttribute("value", Eisladen.eiskugelVariation[i].farbe);
         eiskugelSelect.appendChild(newOptionElement);
     }
     //Change Event, damit man die Auswahlmöglichkeiten ändern kann
-    eiskugelSelect.addEventListener("change", eiskugelVariationenChanged);
-    function eiskugelVariationenChanged(_e) {
+    eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
+    function eiskugelVariationChanged(_e) {
         console.log(_e.target.value);
         localStorage.setItem("eiskugelFarbe", _e.target.value);
         neuZeichnen();
@@ -125,15 +125,15 @@ var Eisladen;
     //und diese im html ausgeben lassen damit sie auf der Seite angeziegt werden
     let streuselSelect = document.getElementById("streusel");
     // Daten aus der data.ts laden 
-    for (let i = 0; i < Eisladen.streuselVariationen.length; i++) {
+    for (let i = 0; i < Eisladen.streuselVariation.length; i++) {
         let newOptionElement = document.createElement("OPTION");
-        newOptionElement.innerText = Eisladen.streuselVariationen[i].name;
-        newOptionElement.setAttribute("value", Eisladen.streuselVariationen[i].farbe);
+        newOptionElement.innerText = Eisladen.streuselVariation[i].name;
+        newOptionElement.setAttribute("value", Eisladen.streuselVariation[i].farbe);
         streuselSelect.appendChild(newOptionElement);
     }
     //Change Event, damit man die Auswahlmöglichkeiten ändern kann
-    streuselSelect.addEventListener("change", streuselVariationenChanged);
-    function streuselVariationenChanged(_e) {
+    streuselSelect.addEventListener("change", streuselVariationChanged);
+    function streuselVariationChanged(_e) {
         console.log(_e.target.value);
         localStorage.setItem("streuselFarbe", _e.target.value);
         neuZeichnen();
@@ -141,15 +141,15 @@ var Eisladen;
     //endregion
     //
     if (localStorage.getItem("streuselFarbe") == null) {
-        localStorage.setItem("streuselFarbe", Eisladen.streuselVariationen[0].farbe);
+        localStorage.setItem("streuselFarbe", Eisladen.streuselVariation[0].farbe);
     }
     streuselSelect.value = localStorage.getItem("streuselFarbe");
     if (localStorage.getItem("eiskugelFarbe") == null) {
-        localStorage.setItem("eiskugelFarbe", Eisladen.eiskugelVariationen[0].farbe);
+        localStorage.setItem("eiskugelFarbe", Eisladen.eiskugelVariation[0].farbe);
     }
     eiskugelSelect.value = localStorage.getItem("eiskugelFarbe");
     if (localStorage.getItem("waffelFarbe") == null) {
-        localStorage.setItem("waffelFarbe", Eisladen.waffelVariationen[0].farbe);
+        localStorage.setItem("waffelFarbe", Eisladen.waffelVariation[0].farbe);
     }
     waffelSelect.value = localStorage.getItem("waffelFarbe");
     //region Canvas

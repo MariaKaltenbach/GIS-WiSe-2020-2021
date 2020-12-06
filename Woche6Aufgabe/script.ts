@@ -9,13 +9,11 @@ namespace Eisladen {
         farbe: string;
     }
 
-
     export interface Waffel extends Lebensmittel { }
 
     export interface Eiskugel extends Lebensmittel { }
 
     export interface Streusel extends Lebensmittel { }
-
 
 
     //region Interface (Interface für Server Antwort)
@@ -245,7 +243,7 @@ namespace Eisladen {
     //regionend
 
     //region JSON (daten aus json laden)
-    
+
     jsonLaden("http://127.0.0.1:5500/Woche6Aufgabe/data.json");
 
     async function jsonLaden(_url: RequestInfo): Promise<void> {
@@ -260,6 +258,7 @@ namespace Eisladen {
     let waffel: Array<Waffel> = JSON.parse(localStorage.getItem("dataWaffel"));
     let eiskugel: Array<Eiskugel> = JSON.parse(localStorage.getItem("dataEiskugel"));
     let streusel: Array<Streusel> = JSON.parse(localStorage.getItem("dataStreusel"));
+
     //regionend
 
     //region Server anfrage 

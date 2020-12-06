@@ -245,6 +245,7 @@ namespace Eisladen {
     //regionend
 
     //region JSON (daten aus json laden)
+    
     jsonLaden("http://127.0.0.1:5500/Woche6Aufgabe/data.json");
 
     async function jsonLaden(_url: RequestInfo): Promise<void> {

@@ -161,6 +161,19 @@ var Eisladen;
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
     }
     //regionend
+    //region JSON (daten aus json laden)
+    jsonLaden("http://127.0.0.1:5500/Woche6Aufgabe/data.json");
+    async function jsonLaden(_url) {
+        let response = await fetch(_url);
+        let data = await response.json();
+        localStorage.setItem("dataWaffel", JSON.stringify(data.WaffelJSON));
+        localStorage.setItem("dataEiskugel", JSON.stringify(data.EiskugelJSON));
+        localStorage.setItem("dataStreusel", JSON.stringify(data.StreuselJSON));
+    }
+    let waffel = JSON.parse(localStorage.getItem("dataWaffel"));
+    let eiskugel = JSON.parse(localStorage.getItem("dataEiskugel"));
+    let streusel = JSON.parse(localStorage.getItem("dataStreusel"));
+    //regionend
     //region Server anfrage 
     async function serverAnfrage(_url) {
         let query = new URLSearchParams(localStorage);

@@ -9,11 +9,14 @@ namespace Eisladen {
         farbe: string;
     }
 
+
     export interface Waffel extends Lebensmittel { }
 
     export interface Eiskugel extends Lebensmittel { }
 
     export interface Streusel extends Lebensmittel { }
+
+
 
     //region Interface (Interface für Server Antwort)
     interface ServerMessage {
@@ -25,6 +28,7 @@ namespace Eisladen {
     //bekommt den Pfad der Seite auf welcher man sich befindet
     let path: string = window.location.pathname;
     let page: string = path.split("/").pop();
+
 
     //region Canvas
     //mit Canvas zeichnen
@@ -114,7 +118,7 @@ namespace Eisladen {
         context.stroke();
     }
     //regionend
-    
+
 
     //region: Abfrage (welche Seite geöffnet ist)
     //Canvas explizit auf der Ergebnis seite zeichnen
@@ -182,8 +186,6 @@ namespace Eisladen {
     }
 
 
-
-
     //und diese im html ausgeben lassen damit sie auf der Seite angeziegt werden
     let streuselSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
     // Daten aus der data.ts laden 
@@ -240,6 +242,23 @@ namespace Eisladen {
         cone(localStorage.getItem("waffelFarbe"), 40, 100);
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
     }
+    //regionend
+
+    //region JSON (daten aus json laden)
+    jsonLaden("http://127.0.0.1:5500/Woche6Aufgabe/data.json");
+
+    async function jsonLaden(_url: RequestInfo): Promise<void> {
+        let response: Response = await fetch(_url);
+        let data = await response.json();
+        localStorage.setItem("dataWaffel", JSON.stringify(data.WaffelJSON));
+        localStorage.setItem("dataEiskugel", JSON.stringify(data.EiskugelJSON));
+        localStorage.setItem("dataStreusel", JSON.stringify(data.StreuselJSON));
+
+    }
+
+    let waffel: Array<Waffel> = JSON.parse(localStorage.getItem("dataWaffel"));
+    let eiskugel: Array<Eiskugel> = JSON.parse(localStorage.getItem("dataEiskugel"));
+    let streusel: Array<Streusel> = JSON.parse(localStorage.getItem("dataStreusel"));
     //regionend
 
     //region Server anfrage 

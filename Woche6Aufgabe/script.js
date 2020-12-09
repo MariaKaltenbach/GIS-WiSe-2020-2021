@@ -3,6 +3,9 @@
 var Eisladen;
 (function (Eisladen) {
     //regionend
+    let waffelVariation;
+    let eiskugelVariation;
+    let streuselVariation;
     //bekommt den Pfad der Seite auf welcher man sich befindet
     let path = window.location.pathname;
     let page = path.split("/").pop();
@@ -93,10 +96,10 @@ var Eisladen;
     // Daten im html ausgeben lassen damit sie auf der Seite angeziegt werden
     let waffelSelect = document.getElementById("waffel");
     // Daten aus der data.ts laden WAFFEL
-    for (let i = 0; i < Eisladen.waffelVariation.length; i++) {
+    for (let i = 0; i < waffelVariation.length; i++) {
         let newOptionElement = document.createElement("OPTION");
-        newOptionElement.innerText = Eisladen.waffelVariation[i].name;
-        newOptionElement.setAttribute("value", Eisladen.waffelVariation[i].farbe);
+        newOptionElement.innerText = waffelVariation[i].name;
+        newOptionElement.setAttribute("value", waffelVariation[i].farbe);
         waffelSelect.appendChild(newOptionElement);
     }
     //Change Event, damit man die Auswahlmöglichkeiten ändern kann
@@ -109,10 +112,10 @@ var Eisladen;
     //und diese im html ausgeben lassen damit sie auf der Seite angeziegt werden
     let eiskugelSelect = document.getElementById("eiskugel");
     // Daten aus der data.ts laden 
-    for (let i = 0; i < Eisladen.eiskugelVariation.length; i++) {
+    for (let i = 0; i < eiskugelVariation.length; i++) {
         let newOptionElement = document.createElement("OPTION");
-        newOptionElement.innerText = Eisladen.eiskugelVariation[i].name;
-        newOptionElement.setAttribute("value", Eisladen.eiskugelVariation[i].farbe);
+        newOptionElement.innerText = eiskugelVariation[i].name;
+        newOptionElement.setAttribute("value", eiskugelVariation[i].farbe);
         eiskugelSelect.appendChild(newOptionElement);
     }
     //Change Event, damit man die Auswahlmöglichkeiten ändern kann
@@ -125,10 +128,10 @@ var Eisladen;
     //und diese im html ausgeben lassen damit sie auf der Seite angeziegt werden
     let streuselSelect = document.getElementById("streusel");
     // Daten aus der data.ts laden 
-    for (let i = 0; i < Eisladen.streuselVariation.length; i++) {
+    for (let i = 0; i < streuselVariation.length; i++) {
         let newOptionElement = document.createElement("OPTION");
-        newOptionElement.innerText = Eisladen.streuselVariation[i].name;
-        newOptionElement.setAttribute("value", Eisladen.streuselVariation[i].farbe);
+        newOptionElement.innerText = streuselVariation[i].name;
+        newOptionElement.setAttribute("value", streuselVariation[i].farbe);
         streuselSelect.appendChild(newOptionElement);
     }
     //Change Event, damit man die Auswahlmöglichkeiten ändern kann
@@ -141,15 +144,15 @@ var Eisladen;
     //endregion
     //
     if (localStorage.getItem("streuselFarbe") == null) {
-        localStorage.setItem("streuselFarbe", Eisladen.streuselVariation[0].farbe);
+        localStorage.setItem("streuselFarbe", streuselVariation[0].farbe);
     }
     streuselSelect.value = localStorage.getItem("streuselFarbe");
     if (localStorage.getItem("eiskugelFarbe") == null) {
-        localStorage.setItem("eiskugelFarbe", Eisladen.eiskugelVariation[0].farbe);
+        localStorage.setItem("eiskugelFarbe", eiskugelVariation[0].farbe);
     }
     eiskugelSelect.value = localStorage.getItem("eiskugelFarbe");
     if (localStorage.getItem("waffelFarbe") == null) {
-        localStorage.setItem("waffelFarbe", Eisladen.waffelVariation[0].farbe);
+        localStorage.setItem("waffelFarbe", waffelVariation[0].farbe);
     }
     waffelSelect.value = localStorage.getItem("waffelFarbe");
     //region Canvas
@@ -162,17 +165,17 @@ var Eisladen;
     }
     //regionend
     //region JSON (daten aus json laden)
-    jsonLaden("https://github.com/MariaKaltenbach/GIS-WiSe-2020-2021/blob/master/Woche6Aufgabe/data.json");
+    jsonLaden("data.json");
     async function jsonLaden(_url) {
         let response = await fetch(_url);
         let data = await response.json();
-        localStorage.setItem("dataWaffel", JSON.stringify(data));
-        localStorage.setItem("dataEiskugel", JSON.stringify(data));
-        localStorage.setItem("dataStreusel", JSON.stringify(data));
+        waffelVariation = data.waffelListe;
+        eiskugelVariation = data.eiskugelListe;
+        streuselVariation = data.streuselListe;
+        icecream("eiskugelFarbe", 0, 0);
+        cone("waffelFarbe", 0, 0);
+        sprinkles("streuselFarbe", 0, 0);
     }
-    let myWaffel = JSON.parse(localStorage.getItem("WaffelJSON"));
-    let myEiskugel = JSON.parse(localStorage.getItem("EiskugelJSON"));
-    let myStreusel = JSON.parse(localStorage.getItem("StreuselJSON"));
     //regionend
     //region Server anfrage 
     async function serverAnfrage(_url) {

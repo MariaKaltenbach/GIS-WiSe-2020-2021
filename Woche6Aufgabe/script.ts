@@ -9,6 +9,12 @@ namespace Eisladen {
         farbe: string;
     }
 
+    interface LebensmittelListe {
+
+        waffelListe: Lebensmittel[];
+        eiskugelListe: Lebensmittel[];
+        streuselListe: Lebensmittel[];
+    }
 
     //region Interface (Interface für Server Antwort)
     interface ServerMessage {
@@ -16,6 +22,10 @@ namespace Eisladen {
         error: string;
     }
     //regionend
+
+    let waffelVariation: Lebensmittel[];
+    let eiskugelVariation: Lebensmittel[];
+    let streuselVariation: Lebensmittel[];
 
     //bekommt den Pfad der Seite auf welcher man sich befindet
     let path: string = window.location.pathname;
@@ -109,10 +119,12 @@ namespace Eisladen {
         context.closePath();
         context.stroke();
     }
+
     //regionend
 
 
-    //region: Abfrage (welche Seite geöffnet ist)
+
+       //region: Abfrage (welche Seite geöffnet ist)
     //Canvas explizit auf der Ergebnis seite zeichnen
     if (page == "Ergebnis.html") {
 
@@ -129,8 +141,7 @@ namespace Eisladen {
         neuZeichnen();
     }
     //regionend
-
-
+    
     //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
     // Daten im html ausgeben lassen damit sie auf der Seite angeziegt werden
     let waffelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
@@ -197,6 +208,8 @@ namespace Eisladen {
         localStorage.setItem("streuselFarbe", (<HTMLOptionElement>_e.target).value);
         neuZeichnen();
     }
+
+
     //endregion
 
     //
@@ -225,6 +238,7 @@ namespace Eisladen {
     waffelSelect.value = localStorage.getItem("waffelFarbe");
 
 
+
     //region Canvas
     //Funktion damit die farbe sich ändert sobalt man etwas auswählt
     //Canvas auf der index.html zeichnen, mit addierten werten um die position zu ändern
@@ -234,25 +248,28 @@ namespace Eisladen {
         cone(localStorage.getItem("waffelFarbe"), 40, 100);
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
     }
-    
+
     //regionend
 
     //region JSON (daten aus json laden)
 
-    jsonLaden("https://github.com/MariaKaltenbach/GIS-WiSe-2020-2021/blob/master/Woche6Aufgabe/data.json");
+    jsonLaden("data.json");
 
     async function jsonLaden(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);
-        let data: Lebensmittel = await response.json();
-        localStorage.setItem("dataWaffel", JSON.stringify(data));
-        localStorage.setItem("dataEiskugel", JSON.stringify(data));
-        localStorage.setItem("dataStreusel", JSON.stringify(data));
+        let data: LebensmittelListe = await response.json();
+        waffelVariation = data.waffelListe;
+        eiskugelVariation = data.eiskugelListe;
+        streuselVariation = data.streuselListe;
+
+        icecream("eiskugelFarbe", 0, 0);
+        cone("waffelFarbe", 0, 0);
+        sprinkles("streuselFarbe", 0, 0);
 
     }
 
-    let myWaffel: Array<Lebensmittel> = JSON.parse(localStorage.getItem("WaffelJSON"));
-    let myEiskugel: Array<Lebensmittel> = JSON.parse(localStorage.getItem("EiskugelJSON"));
-    let myStreusel: Array<Lebensmittel> = JSON.parse(localStorage.getItem("StreuselJSON"));
+  
+
 
     //regionend
 

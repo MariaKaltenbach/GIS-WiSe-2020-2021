@@ -1,4 +1,4 @@
-namespace Eisladen {
+/*namespace Eisladen {
 
     export let waffelVariation: Lebensmittel[] = [
         { geschmack: "Schokolade", preis: 0.70, name: "Schokowaffel", farbe: "black" },
@@ -33,3 +33,4 @@ namespace Eisladen {
 
 }
 
+*/

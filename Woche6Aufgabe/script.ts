@@ -9,12 +9,6 @@ namespace Eisladen {
         farbe: string;
     }
 
-    export interface Waffel extends Lebensmittel { }
-
-    export interface Eiskugel extends Lebensmittel { }
-
-    export interface Streusel extends Lebensmittel { }
-
 
     //region Interface (Interface für Server Antwort)
     interface ServerMessage {
@@ -240,24 +234,25 @@ namespace Eisladen {
         cone(localStorage.getItem("waffelFarbe"), 40, 100);
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
     }
+    
     //regionend
 
     //region JSON (daten aus json laden)
 
-    jsonLaden("http://127.0.0.1:5500/Woche6Aufgabe/data.json");
+    jsonLaden("https://github.com/MariaKaltenbach/GIS-WiSe-2020-2021/blob/master/Woche6Aufgabe/data.json");
 
     async function jsonLaden(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);
-        let data = await response.json();
-        localStorage.setItem("dataWaffel", JSON.stringify(data.WaffelJSON));
-        localStorage.setItem("dataEiskugel", JSON.stringify(data.EiskugelJSON));
-        localStorage.setItem("dataStreusel", JSON.stringify(data.StreuselJSON));
+        let data: Lebensmittel = await response.json();
+        localStorage.setItem("dataWaffel", JSON.stringify(data));
+        localStorage.setItem("dataEiskugel", JSON.stringify(data));
+        localStorage.setItem("dataStreusel", JSON.stringify(data));
 
     }
 
-    let waffel: Array<Waffel> = JSON.parse(localStorage.getItem("dataWaffel"));
-    let eiskugel: Array<Eiskugel> = JSON.parse(localStorage.getItem("dataEiskugel"));
-    let streusel: Array<Streusel> = JSON.parse(localStorage.getItem("dataStreusel"));
+    let myWaffel: Array<Lebensmittel> = JSON.parse(localStorage.getItem("WaffelJSON"));
+    let myEiskugel: Array<Lebensmittel> = JSON.parse(localStorage.getItem("EiskugelJSON"));
+    let myStreusel: Array<Lebensmittel> = JSON.parse(localStorage.getItem("StreuselJSON"));
 
     //regionend
 

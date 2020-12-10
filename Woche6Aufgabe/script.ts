@@ -152,12 +152,14 @@ namespace Eisladen {
         let eiskugelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("eiskugel");
         let streuselSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
 
-        for (let i: number = 0; i < waffelVariation.length; i++) {
+        /*for (let i: number = 0; i < waffelVariation.length; i++) {
             let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
             newOptionElement.innerText = waffelVariation[i].name;
             newOptionElement.setAttribute("value", waffelVariation[i].farbe);
             waffelSelect.appendChild(newOptionElement);
+
         }
+*/
         for (let i: number = 0; i < eiskugelVariation.length; i++) {
             let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
             newOptionElement.innerText = eiskugelVariation[i].name;
@@ -242,7 +244,7 @@ namespace Eisladen {
     //regionend
 
 
-    jsonLaden("data.json");
+    jsonLaden("http://127.0.0.1:5500/Woche6Aufgabe/data.json");
 
     async function jsonLaden(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);
@@ -253,7 +255,6 @@ namespace Eisladen {
 
         seiteAufbau();
     }
-
 
 
 

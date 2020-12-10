@@ -97,12 +97,14 @@ var Eisladen;
         let waffelSelect = document.getElementById("waffel");
         let eiskugelSelect = document.getElementById("eiskugel");
         let streuselSelect = document.getElementById("streusel");
-        for (let i = 0; i < waffelVariation.length; i++) {
-            let newOptionElement = document.createElement("OPTION");
+        /*for (let i: number = 0; i < waffelVariation.length; i++) {
+            let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
             newOptionElement.innerText = waffelVariation[i].name;
             newOptionElement.setAttribute("value", waffelVariation[i].farbe);
             waffelSelect.appendChild(newOptionElement);
+
         }
+*/
         for (let i = 0; i < eiskugelVariation.length; i++) {
             let newOptionElement = document.createElement("OPTION");
             newOptionElement.innerText = eiskugelVariation[i].name;
@@ -157,7 +159,7 @@ var Eisladen;
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
     }
     //regionend
-    jsonLaden("data.json");
+    jsonLaden("http://127.0.0.1:5500/Woche6Aufgabe/data.json");
     async function jsonLaden(_url) {
         let response = await fetch(_url);
         let data = await response.json();

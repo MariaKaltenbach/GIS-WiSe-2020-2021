@@ -150,8 +150,8 @@ namespace Eisladen {
         //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
 
         let selectWaffel: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
-        let eiskugelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("eiskugel");
-        let streuselSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
+        let selectEiskugel: HTMLSelectElement = <HTMLSelectElement>document.getElementById("eiskugel");
+        let selectStreusel: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
 
         for (let i: number = 0; i < waffelVariation.length; i++) {
             let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
@@ -165,20 +165,20 @@ namespace Eisladen {
             let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
             newOptionElement.innerText = eiskugelVariation[i].name;
             newOptionElement.setAttribute("value", eiskugelVariation[i].farbe);
-            eiskugelSelect.appendChild(newOptionElement);
+            selectEiskugel.appendChild(newOptionElement);
 
         }
         for (let i: number = 0; i < streuselVariation.length; i++) {
             let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
             newOptionElement.innerText = streuselVariation[i].name;
             newOptionElement.setAttribute("value", streuselVariation[i].farbe);
-            streuselSelect.appendChild(newOptionElement);
+            selectStreusel.appendChild(newOptionElement);
 
         }
         //Change Event, damit man die Auswahlmöglichkeiten ändern kann
         selectWaffel.addEventListener("change", waffelVariationChanged);
-        eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
-        streuselSelect.addEventListener("change", streuselVariationChanged);
+        selectEiskugel.addEventListener("change", eiskugelVariationChanged);
+        selectStreusel.addEventListener("change", streuselVariationChanged);
 
 
         function waffelVariationChanged(_e: Event): void {
@@ -214,7 +214,7 @@ namespace Eisladen {
             localStorage.setItem("eiskugelFarbe", eiskugelVariation[0].farbe);
 
         }
-        eiskugelSelect.value = localStorage.getItem("eiskugelFarbe");
+        selectEiskugel.value = localStorage.getItem("eiskugelFarbe");
 
 
         if (localStorage.getItem("streuselFarbe") == null) {
@@ -222,7 +222,7 @@ namespace Eisladen {
             localStorage.setItem("streuselFarbe", streuselVariation[0].farbe);
 
         }
-        streuselSelect.value = localStorage.getItem("streuselFarbe");
+        selectStreusel.value = localStorage.getItem("streuselFarbe");
 
 
     }

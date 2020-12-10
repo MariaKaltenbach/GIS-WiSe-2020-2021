@@ -95,8 +95,8 @@ var Eisladen;
     function seitenAufbau() {
         //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
         let selectWaffel = document.getElementById("waffel");
-        let eiskugelSelect = document.getElementById("eiskugel");
-        let streuselSelect = document.getElementById("streusel");
+        let selectEiskugel = document.getElementById("eiskugel");
+        let selectStreusel = document.getElementById("streusel");
         for (let i = 0; i < waffelVariation.length; i++) {
             let newOptionElement = document.createElement("OPTION");
             newOptionElement.innerText = waffelVariation[i].name;
@@ -107,18 +107,18 @@ var Eisladen;
             let newOptionElement = document.createElement("OPTION");
             newOptionElement.innerText = eiskugelVariation[i].name;
             newOptionElement.setAttribute("value", eiskugelVariation[i].farbe);
-            eiskugelSelect.appendChild(newOptionElement);
+            selectEiskugel.appendChild(newOptionElement);
         }
         for (let i = 0; i < streuselVariation.length; i++) {
             let newOptionElement = document.createElement("OPTION");
             newOptionElement.innerText = streuselVariation[i].name;
             newOptionElement.setAttribute("value", streuselVariation[i].farbe);
-            streuselSelect.appendChild(newOptionElement);
+            selectStreusel.appendChild(newOptionElement);
         }
         //Change Event, damit man die Auswahlmöglichkeiten ändern kann
         selectWaffel.addEventListener("change", waffelVariationChanged);
-        eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
-        streuselSelect.addEventListener("change", streuselVariationChanged);
+        selectEiskugel.addEventListener("change", eiskugelVariationChanged);
+        selectStreusel.addEventListener("change", streuselVariationChanged);
         function waffelVariationChanged(_e) {
             console.log(_e.target.value);
             localStorage.setItem("waffelFarbe", _e.target.value);
@@ -142,11 +142,11 @@ var Eisladen;
         if (localStorage.getItem("eiskugelFarbe") == null) {
             localStorage.setItem("eiskugelFarbe", eiskugelVariation[0].farbe);
         }
-        eiskugelSelect.value = localStorage.getItem("eiskugelFarbe");
+        selectEiskugel.value = localStorage.getItem("eiskugelFarbe");
         if (localStorage.getItem("streuselFarbe") == null) {
             localStorage.setItem("streuselFarbe", streuselVariation[0].farbe);
         }
-        streuselSelect.value = localStorage.getItem("streuselFarbe");
+        selectStreusel.value = localStorage.getItem("streuselFarbe");
     }
     //region Canvas
     //Funktion damit die farbe sich ändert sobalt man etwas auswählt

@@ -159,7 +159,7 @@ var Eisladen;
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
     }
     //regionend
-    jsonLaden("http://127.0.0.1:5500/Woche6Aufgabe/data.json");
+    jsonLaden("data.json");
     async function jsonLaden(_url) {
         let response = await fetch(_url);
         let data = await response.json();

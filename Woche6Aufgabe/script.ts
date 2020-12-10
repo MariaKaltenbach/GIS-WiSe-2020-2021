@@ -160,6 +160,7 @@ namespace Eisladen {
 
         }
 */
+
         for (let i: number = 0; i < eiskugelVariation.length; i++) {
             let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
             newOptionElement.innerText = eiskugelVariation[i].name;
@@ -244,7 +245,7 @@ namespace Eisladen {
     //regionend
 
 
-    jsonLaden("http://127.0.0.1:5500/Woche6Aufgabe/data.json");
+    jsonLaden("data.json");
 
     async function jsonLaden(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);

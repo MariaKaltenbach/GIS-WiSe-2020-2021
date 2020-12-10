@@ -128,8 +128,8 @@ namespace Eisladen {
     //Canvas explizit auf der Ergebnis seite zeichnen
     if (page == "Ergebnis.html") {
 
-        cone(localStorage.getItem("waffelFarbe"), 0, 0);  //Ergenis der Eiscreme wird ausgegeben
         icecream(localStorage.getItem("eiskugelFarbe"), 0, 0);  //Ergebnis der Eiscreme wird ausgegeben
+        cone(localStorage.getItem("waffelFarbe"), 0, 0);  //Ergenis der Eiscreme wird ausgegeben
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);  //Ergenbis der eiscreme wird ausgegeben
 
         serverAnfrage("https://gis-communication.herokuapp.com");
@@ -149,7 +149,7 @@ namespace Eisladen {
 
         //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
 
-        let waffelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
+        let selectWaffel: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
         let eiskugelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("eiskugel");
         let streuselSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
 
@@ -157,7 +157,7 @@ namespace Eisladen {
             let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
             newOptionElement.innerText = waffelVariation[i].name;
             newOptionElement.setAttribute("value", waffelVariation[i].farbe);
-            waffelSelect.appendChild(newOptionElement);
+            selectWaffel.appendChild(newOptionElement);
 
         }
 
@@ -176,7 +176,7 @@ namespace Eisladen {
 
         }
         //Change Event, damit man die Auswahlmöglichkeiten ändern kann
-        waffelSelect.addEventListener("change", waffelVariationChanged);
+        selectWaffel.addEventListener("change", waffelVariationChanged);
         eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
         streuselSelect.addEventListener("change", streuselVariationChanged);
 
@@ -207,7 +207,7 @@ namespace Eisladen {
             localStorage.setItem("waffelFarbe", waffelVariation[0].farbe);
 
         }
-        waffelSelect.value = localStorage.getItem("waffelFarbe");
+        selectWaffel.value = localStorage.getItem("waffelFarbe");
 
         if (localStorage.getItem("eiskugelFarbe") == null) {
 
@@ -232,8 +232,8 @@ namespace Eisladen {
     //Canvas auf der index.html zeichnen, mit addierten werten um die position zu ändern
     function neuZeichnen(): void {
 
-        cone(localStorage.getItem("waffelFarbe"), 40, 100);
         icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
+        cone(localStorage.getItem("waffelFarbe"), 40, 100);
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
 
     }

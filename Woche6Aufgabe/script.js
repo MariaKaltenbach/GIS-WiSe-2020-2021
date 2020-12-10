@@ -82,8 +82,8 @@ var Eisladen;
     //region: Abfrage (welche Seite geöffnet ist)
     //Canvas explizit auf der Ergebnis seite zeichnen
     if (page == "Ergebnis.html") {
-        cone(localStorage.getItem("waffelFarbe"), 0, 0); //Ergenis der Eiscreme wird ausgegeben
         icecream(localStorage.getItem("eiskugelFarbe"), 0, 0); //Ergebnis der Eiscreme wird ausgegeben
+        cone(localStorage.getItem("waffelFarbe"), 0, 0); //Ergenis der Eiscreme wird ausgegeben
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0); //Ergenbis der eiscreme wird ausgegeben
         serverAnfrage("https://gis-communication.herokuapp.com");
     }
@@ -94,14 +94,14 @@ var Eisladen;
     //regionend
     function seitenAufbau() {
         //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
-        let waffelSelect = document.getElementById("waffel");
+        let selectWaffel = document.getElementById("waffel");
         let eiskugelSelect = document.getElementById("eiskugel");
         let streuselSelect = document.getElementById("streusel");
         for (let i = 0; i < waffelVariation.length; i++) {
             let newOptionElement = document.createElement("OPTION");
             newOptionElement.innerText = waffelVariation[i].name;
             newOptionElement.setAttribute("value", waffelVariation[i].farbe);
-            waffelSelect.appendChild(newOptionElement);
+            selectWaffel.appendChild(newOptionElement);
         }
         for (let i = 0; i < eiskugelVariation.length; i++) {
             let newOptionElement = document.createElement("OPTION");
@@ -116,7 +116,7 @@ var Eisladen;
             streuselSelect.appendChild(newOptionElement);
         }
         //Change Event, damit man die Auswahlmöglichkeiten ändern kann
-        waffelSelect.addEventListener("change", waffelVariationChanged);
+        selectWaffel.addEventListener("change", waffelVariationChanged);
         eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
         streuselSelect.addEventListener("change", streuselVariationChanged);
         function waffelVariationChanged(_e) {
@@ -138,7 +138,7 @@ var Eisladen;
         if (localStorage.getItem("waffelFarbe") == null) {
             localStorage.setItem("waffelFarbe", waffelVariation[0].farbe);
         }
-        waffelSelect.value = localStorage.getItem("waffelFarbe");
+        selectWaffel.value = localStorage.getItem("waffelFarbe");
         if (localStorage.getItem("eiskugelFarbe") == null) {
             localStorage.setItem("eiskugelFarbe", eiskugelVariation[0].farbe);
         }
@@ -152,8 +152,8 @@ var Eisladen;
     //Funktion damit die farbe sich ändert sobalt man etwas auswählt
     //Canvas auf der index.html zeichnen, mit addierten werten um die position zu ändern
     function neuZeichnen() {
-        cone(localStorage.getItem("waffelFarbe"), 40, 100);
         icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
+        cone(localStorage.getItem("waffelFarbe"), 40, 100);
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
     }
     //regionend

@@ -124,7 +124,7 @@ namespace Eisladen {
 
 
 
-       //region: Abfrage (welche Seite geöffnet ist)
+    //region: Abfrage (welche Seite geöffnet ist)
     //Canvas explizit auf der Ergebnis seite zeichnen
     if (page == "Ergebnis.html") {
 
@@ -140,104 +140,93 @@ namespace Eisladen {
 
         neuZeichnen();
     }
+
     //regionend
+
+    function seiteAufbau(): void {
+
+
+        //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
+
+        let waffelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
+        let eiskugelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("eiskugel");
+        let streuselSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
+
+        for (let i: number = 0; i < waffelVariation.length; i++) {
+            let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
+            newOptionElement.innerText = waffelVariation[i].name;
+            newOptionElement.setAttribute("value", waffelVariation[i].farbe);
+            waffelSelect.appendChild(newOptionElement);
+        }
+        for (let i: number = 0; i < eiskugelVariation.length; i++) {
+            let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
+            newOptionElement.innerText = eiskugelVariation[i].name;
+            newOptionElement.setAttribute("value", eiskugelVariation[i].farbe);
+            eiskugelSelect.appendChild(newOptionElement);
+
+        }
+        for (let i: number = 0; i < streuselVariation.length; i++) {
+            let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
+            newOptionElement.innerText = streuselVariation[i].name;
+            newOptionElement.setAttribute("value", streuselVariation[i].farbe);
+            streuselSelect.appendChild(newOptionElement);
+
+        }
+        //Change Event, damit man die Auswahlmöglichkeiten ändern kann
+        waffelSelect.addEventListener("change", waffelVariationChanged);
+        eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
+        streuselSelect.addEventListener("change", streuselVariationChanged);
+
+
+        function waffelVariationChanged(_e: Event): void {
+            console.log((<HTMLOptionElement>_e.target).value);
+            localStorage.setItem("waffelFarbe", (<HTMLOptionElement>_e.target).value);
+            neuZeichnen();
+        }
+
+        function eiskugelVariationChanged(_e: Event): void {
+            console.log((<HTMLOptionElement>_e.target).value);
+            localStorage.setItem("eiskugelFarbe", (<HTMLOptionElement>_e.target).value);
+            neuZeichnen();
+
+        }
+        function streuselVariationChanged(_e: Event): void {
+            console.log((<HTMLOptionElement>_e.target).value);
+            localStorage.setItem("streuselFarbe", (<HTMLOptionElement>_e.target).value);
+            neuZeichnen();
+
+        }
+
+        //endregion
+
+        if (localStorage.getItem("waffelFarbe") == null) {
+
+            localStorage.setItem("waffelFarbe", waffelVariation[0].farbe);
+
+        }
+        waffelSelect.value = localStorage.getItem("waffelFarbe");
+
+        if (localStorage.getItem("eiskugelFarbe") == null) {
+
+            localStorage.setItem("eiskugelFarbe", eiskugelVariation[0].farbe);
+
+        }
+        eiskugelSelect.value = localStorage.getItem("eiskugelFarbe");
+
+
+        if (localStorage.getItem("streuselFarbe") == null) {
+
+            localStorage.setItem("streuselFarbe", streuselVariation[0].farbe);
+
+        }
+        streuselSelect.value = localStorage.getItem("streuselFarbe");
+
+
     
-    //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
-    // Daten im html ausgeben lassen damit sie auf der Seite angeziegt werden
-    let waffelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
 
-    // Daten aus der data.ts laden WAFFEL
-    for (let i: number = 0; i < waffelVariation.length; i++) {
-        let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
-        newOptionElement.innerText = waffelVariation[i].name;
-        newOptionElement.setAttribute("value", waffelVariation[i].farbe);
-        waffelSelect.appendChild(newOptionElement);
 
 
     }
-    //Change Event, damit man die Auswahlmöglichkeiten ändern kann
-    waffelSelect.addEventListener("change", waffelVariationChanged);
-
-    function waffelVariationChanged(_e: Event): void {
-        console.log((<HTMLOptionElement>_e.target).value);
-        localStorage.setItem("waffelFarbe", (<HTMLOptionElement>_e.target).value);
-        neuZeichnen();
-    }
-
-
-
-
-    //und diese im html ausgeben lassen damit sie auf der Seite angeziegt werden
-    let eiskugelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("eiskugel");
-    // Daten aus der data.ts laden 
-    for (let i: number = 0; i < eiskugelVariation.length; i++) {
-        let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
-        newOptionElement.innerText = eiskugelVariation[i].name;
-        newOptionElement.setAttribute("value", eiskugelVariation[i].farbe);
-        eiskugelSelect.appendChild(newOptionElement);
-
-    }
-    //Change Event, damit man die Auswahlmöglichkeiten ändern kann
-
-    eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
-
-    function eiskugelVariationChanged(_e: Event): void {
-        console.log((<HTMLOptionElement>_e.target).value);
-        localStorage.setItem("eiskugelFarbe", (<HTMLOptionElement>_e.target).value);
-        neuZeichnen();
-
-    }
-
-
-    //und diese im html ausgeben lassen damit sie auf der Seite angeziegt werden
-    let streuselSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
-    // Daten aus der data.ts laden 
-    for (let i: number = 0; i < streuselVariation.length; i++) {
-        let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
-        newOptionElement.innerText = streuselVariation[i].name;
-        newOptionElement.setAttribute("value", streuselVariation[i].farbe);
-        streuselSelect.appendChild(newOptionElement);
-
-    }
-    //Change Event, damit man die Auswahlmöglichkeiten ändern kann
-
-    streuselSelect.addEventListener("change", streuselVariationChanged);
-
-    function streuselVariationChanged(_e: Event): void {
-        console.log((<HTMLOptionElement>_e.target).value);
-        localStorage.setItem("streuselFarbe", (<HTMLOptionElement>_e.target).value);
-        neuZeichnen();
-    }
-
-
-    //endregion
-
-    //
-
-    if (localStorage.getItem("streuselFarbe") == null) {
-
-        localStorage.setItem("streuselFarbe", streuselVariation[0].farbe);
-
-    }
-    streuselSelect.value = localStorage.getItem("streuselFarbe");
-
-
-    if (localStorage.getItem("eiskugelFarbe") == null) {
-
-        localStorage.setItem("eiskugelFarbe", eiskugelVariation[0].farbe);
-
-    }
-    eiskugelSelect.value = localStorage.getItem("eiskugelFarbe");
-
-
-    if (localStorage.getItem("waffelFarbe") == null) {
-
-        localStorage.setItem("waffelFarbe", waffelVariation[0].farbe);
-
-    }
-    waffelSelect.value = localStorage.getItem("waffelFarbe");
-
-
 
     //region Canvas
     //Funktion damit die farbe sich ändert sobalt man etwas auswählt
@@ -247,11 +236,11 @@ namespace Eisladen {
         icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
         cone(localStorage.getItem("waffelFarbe"), 40, 100);
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
+
     }
 
     //regionend
 
-    //region JSON (daten aus json laden)
 
     jsonLaden("data.json");
 
@@ -262,16 +251,11 @@ namespace Eisladen {
         eiskugelVariation = data.eiskugelListe;
         streuselVariation = data.streuselListe;
 
-        icecream("eiskugelFarbe", 0, 0);
-        cone("waffelFarbe", 0, 0);
-        sprinkles("streuselFarbe", 0, 0);
-
+        seiteAufbau();
     }
 
-  
 
 
-    //regionend
 
     //region Server anfrage 
     async function serverAnfrage(_url: string): Promise<void> {
@@ -295,5 +279,4 @@ namespace Eisladen {
     }
     //regionend
 }
-
 

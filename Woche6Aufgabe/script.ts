@@ -128,8 +128,8 @@ namespace Eisladen {
     //Canvas explizit auf der Ergebnis seite zeichnen
     if (page == "Ergebnis.html") {
 
-        icecream(localStorage.getItem("eiskugelFarbe"), 0, 0);  //Ergebnis der Eiscreme wird ausgegeben
         cone(localStorage.getItem("waffelFarbe"), 0, 0);  //Ergenis der Eiscreme wird ausgegeben
+        icecream(localStorage.getItem("eiskugelFarbe"), 0, 0);  //Ergebnis der Eiscreme wird ausgegeben
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);  //Ergenbis der eiscreme wird ausgegeben
 
         serverAnfrage("https://gis-communication.herokuapp.com");
@@ -139,11 +139,12 @@ namespace Eisladen {
     if (page == "index.html") {
 
         neuZeichnen();
+        
     }
 
     //regionend
 
-    function seiteAufbau(): void {
+    function seitenAufbau(): void {
 
 
         //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
@@ -152,14 +153,13 @@ namespace Eisladen {
         let eiskugelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("eiskugel");
         let streuselSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
 
-        /*for (let i: number = 0; i < waffelVariation.length; i++) {
+        for (let i: number = 0; i < waffelVariation.length; i++) {
             let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
             newOptionElement.innerText = waffelVariation[i].name;
             newOptionElement.setAttribute("value", waffelVariation[i].farbe);
             waffelSelect.appendChild(newOptionElement);
 
         }
-*/
 
         for (let i: number = 0; i < eiskugelVariation.length; i++) {
             let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
@@ -225,10 +225,6 @@ namespace Eisladen {
         streuselSelect.value = localStorage.getItem("streuselFarbe");
 
 
-    
-
-
-
     }
 
     //region Canvas
@@ -236,8 +232,8 @@ namespace Eisladen {
     //Canvas auf der index.html zeichnen, mit addierten werten um die position zu ändern
     function neuZeichnen(): void {
 
-        icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
         cone(localStorage.getItem("waffelFarbe"), 40, 100);
+        icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
 
     }
@@ -254,7 +250,7 @@ namespace Eisladen {
         eiskugelVariation = data.eiskugelListe;
         streuselVariation = data.streuselListe;
 
-        seiteAufbau();
+        seitenAufbau();
     }
 
 

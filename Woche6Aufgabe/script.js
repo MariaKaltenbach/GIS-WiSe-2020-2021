@@ -82,8 +82,8 @@ var Eisladen;
     //region: Abfrage (welche Seite geöffnet ist)
     //Canvas explizit auf der Ergebnis seite zeichnen
     if (page == "Ergebnis.html") {
-        icecream(localStorage.getItem("eiskugelFarbe"), 0, 0); //Ergebnis der Eiscreme wird ausgegeben
         cone(localStorage.getItem("waffelFarbe"), 0, 0); //Ergenis der Eiscreme wird ausgegeben
+        icecream(localStorage.getItem("eiskugelFarbe"), 0, 0); //Ergebnis der Eiscreme wird ausgegeben
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0); //Ergenbis der eiscreme wird ausgegeben
         serverAnfrage("https://gis-communication.herokuapp.com");
     }
@@ -92,19 +92,17 @@ var Eisladen;
         neuZeichnen();
     }
     //regionend
-    function seiteAufbau() {
+    function seitenAufbau() {
         //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
         let waffelSelect = document.getElementById("waffel");
         let eiskugelSelect = document.getElementById("eiskugel");
         let streuselSelect = document.getElementById("streusel");
-        /*for (let i: number = 0; i < waffelVariation.length; i++) {
-            let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
+        for (let i = 0; i < waffelVariation.length; i++) {
+            let newOptionElement = document.createElement("OPTION");
             newOptionElement.innerText = waffelVariation[i].name;
             newOptionElement.setAttribute("value", waffelVariation[i].farbe);
             waffelSelect.appendChild(newOptionElement);
-
         }
-*/
         for (let i = 0; i < eiskugelVariation.length; i++) {
             let newOptionElement = document.createElement("OPTION");
             newOptionElement.innerText = eiskugelVariation[i].name;
@@ -154,8 +152,8 @@ var Eisladen;
     //Funktion damit die farbe sich ändert sobalt man etwas auswählt
     //Canvas auf der index.html zeichnen, mit addierten werten um die position zu ändern
     function neuZeichnen() {
-        icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
         cone(localStorage.getItem("waffelFarbe"), 40, 100);
+        icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
         sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
     }
     //regionend
@@ -166,7 +164,7 @@ var Eisladen;
         waffelVariation = data.waffelListe;
         eiskugelVariation = data.eiskugelListe;
         streuselVariation = data.streuselListe;
-        seiteAufbau();
+        seitenAufbau();
     }
     //region Server anfrage 
     async function serverAnfrage(_url) {

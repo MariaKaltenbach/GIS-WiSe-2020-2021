@@ -1,5 +1,7 @@
+
+
 //region Interface (Interface für alle drei Auswahlmöglichkeiten angelegt)
-export interface Lebensmittel {
+interface Lebensmittel {
 
     geschmack: string;
     preis: number;
@@ -278,5 +280,4 @@ async function serverAnfrage(_url: string): Promise<void> {
     serverAntwort.appendChild(text);
 }
     //regionend
-
 

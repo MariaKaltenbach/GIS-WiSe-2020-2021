@@ -4,7 +4,7 @@
     "description": "Maria Kaltenbach",
     "main": "index.js",
     "scripts": {
-        "start": "node Woche10Aufgabe/script.js"
+        "start": "node Woche10Aufgabe/server.js"
     },
     "repository": {
         "type": "git",

@@ -24,15 +24,12 @@ var P_3_1Server;
         console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
-        if (_request.url) {
-            let q = Url.parse(_request.url, true);
-            for (let key in q.query) {
-                _response.write(key + ":" + q.query[key] + "<br/>");
-            }
-            let stringJSON = JSON.stringify(q.query);
-            _response.write(stringJSON);
+        let url = Url.parse(_request.url, true);
+        for (let key in url.query) {
+            _response.write(key + ":" + url.query[key]);
         }
-        _response.end();
+        let jsonString = JSON.stringify(url.query);
+        _response.write(jsonString);
         _response.write(_request.url);
         console.log(_request.url);
         _response.end();

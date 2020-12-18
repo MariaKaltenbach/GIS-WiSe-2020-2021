@@ -26,19 +26,12 @@ export namespace P_3_1Server {
         console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
-        if (_request.url) {
-            let q: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            
-            for (let key in q.query) {
-                _response.write (key + ":" + q.query[key] + "<br/>");
-            }
-    
-            let stringJSON: string = JSON.stringify(q.query);
-            _response.write(stringJSON);
+        let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+        for (let key in url.query) {
+            _response.write(key + ":" + url.query[key]);
         }
-    
-        _response.end();
-    
+        let jsonString: String = JSON.stringify(url.query);
+        _response.write(jsonString);
         _response.write(_request.url);
         console.log(_request.url);
         _response.end();
@@ -46,14 +39,14 @@ export namespace P_3_1Server {
     }
 
 
-   /* let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-    for (let key in url.query) {
-        _response.write(key + ":" + url.query[key]);
-    }
-    let jsonString: String = JSON.stringify(url.query);
-    _response.write(jsonString);*/
+    /* let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+     for (let key in url.query) {
+         _response.write(key + ":" + url.query[key]);
+     }
+     let jsonString: String = JSON.stringify(url.query);
+     _response.write(jsonString);*/
 
-    }
+}
 
 
 

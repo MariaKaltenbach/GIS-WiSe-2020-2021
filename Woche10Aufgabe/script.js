@@ -2,8 +2,8 @@
 let formularForm = document.getElementById("formular");
 let registerButton = document.getElementById("submit");
 registerButton.addEventListener("click", submitToServer);
-let url = "https://giswise2021.herokuapp.com/";
-//let url: string = "http://localhost:8100/";
+//let url: string = "https://giswise2021.herokuapp.com/";
+let url = "http://localhost:8100/";
 async function submitToServer(_event) {
     let formData = new FormData(document.forms[0]);
     let query = new URLSearchParams(formData);

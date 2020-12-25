@@ -3,17 +3,16 @@ let formularForm = document.getElementById("formular");
 let registerButton = document.getElementById("submit");
 registerButton.addEventListener("click", submitToServer);
 //let url: string = "https://giswise2021.herokuapp.com/";
-let url = "http://localhost:8100/";
+let url = "http://localhost:8100";
 async function submitToServer(_event) {
     let formData = new FormData(document.forms[0]);
     let query = new URLSearchParams(formData);
     url = url + "?" + query.toString();
     console.log(url);
-    let response = await fetch(url);
+    let response = await fetch(url + "?" + query.toString());
     let responseText = await response.text();
     console.log(response);
-    await fetch(url + "?" + query.toString());
-    alert("Response: " + responseText);
+    alert(responseText);
 }
 async function communicate(_url) {
     let response = await fetch(_url);

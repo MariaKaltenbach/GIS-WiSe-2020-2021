@@ -1,14 +1,18 @@
 Body {
-    background-color: lightblue;
+    background-color: white;
+}
+
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
 }
 
 p {
     font-size: 20px;
     margin-left: 50px;
-}
-
-#Login {
-    text-align: right;
 }
 
 .Rregistrieren {
@@ -19,8 +23,10 @@ p {
 
 .Einloggen {
     width: 200px;
-    margin-top: 50px;
-    margin-left: 800px;
+    background-color: lightblue;
+    margin: auto;
+    padding: 100px;
+    padding-bottom: 340px;
 }
 
 .Absatz {
@@ -34,13 +40,13 @@ img {
     height: 300px;
 }
 
+input,
 button {
-    background-color: white;
-    border-radius: 10px 10px 10px 10px;
-}
-
-input {
-    border-radius: 7px 7px 7px 7px;
+    border-radius: 3px 3px 3px 3px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-top: none;
 }
 
 

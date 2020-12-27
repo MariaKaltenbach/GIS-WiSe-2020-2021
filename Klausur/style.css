@@ -3,16 +3,12 @@ Body {
 }
 
 h1 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-h2 {
     text-align: center;
 }
 
 p {
-    font-size: 20px;
-    margin-left: 50px;
+    font-size: 17px;
+    margin-left: 20px;
 }
 
 .Rregistrieren {
@@ -26,7 +22,7 @@ p {
     background-color: lightblue;
     margin: auto;
     padding: 100px;
-    padding-bottom: 340px;
+    padding-bottom: 150px;
 }
 
 .Absatz {
@@ -47,6 +43,48 @@ button {
     border-right: none;
     border-bottom: none;
     border-top: none;
+}
+
+input {
+    width: 200px;
+    height: 30px;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    margin-left: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.Mynav a {
+    float: right;
+    color: black;
+    text-align: right;
+    padding: 10px 12px;
+    border-bottom: 5px;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+
+/* Farbe der Navigation wenn man drüber fährt*/
+
+.Mynav a:hover {
+    background-color: lightblue;
+    color: black;
+}
+
+
+/* Aktuelle Navigation (Link) hervorheben*/
+
+.Mynav a.active {
+    background-color: lightblue;
+    color: black;
 }
 
 

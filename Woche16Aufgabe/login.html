@@ -14,19 +14,22 @@
 
         <h1>Einloggen</h1>
 
-        <label>E-Mail:</label>
-        <input type="text" name="email" />
-        <br>
-        <br>
-        <label>Passwort:</label>
-        <input type="text" name="passwort" />
-        <br>
-        <br>
-        <button id="submit" name="Einloggen" type="button">Einloggen</button>
+        <form id="form" onsubmit="return false">
 
 
+            <label>E-Mail:</label>
+            <input type="text" name="email" />
+            <br>
+            <br>
+            <label>Passwort:</label>
+            <input type="text" name="passwort" />
+            <br>
+            <br>
+
+            <button id="submit">Einloggen</button>
+        </form>
     </div>
-
+    <div id="antwort"></div>
 </body>
 
 </html>

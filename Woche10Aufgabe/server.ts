@@ -1,3 +1,4 @@
+  
 //importiert Http Modul 
 import * as Http from "http";
 import * as Url from "url";
@@ -39,21 +40,7 @@ export namespace P_3_1Server {
     
         _response.end();
     
-        //ein neuer Header wird erstellt und dort das request auf einer neuen Seite ausgegeben
     }
 
 
-   /* let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-    for (let key in url.query) {
-        _response.write(key + ":" + url.query[key]);
-    }
-    let jsonString: String = JSON.stringify(url.query);
-    _response.write(jsonString);*/
-
-    }
-
-
-
-
-
-
+}

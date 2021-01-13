@@ -34,13 +34,6 @@ var P_3_1Server;
             _response.write(stringJSON);
         }
         _response.end();
-        //ein neuer Header wird erstellt und dort das request auf einer neuen Seite ausgegeben
     }
-    /* let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-     for (let key in url.query) {
-         _response.write(key + ":" + url.query[key]);
-     }
-     let jsonString: String = JSON.stringify(url.query);
-     _response.write(jsonString);*/
 })(P_3_1Server = exports.P_3_1Server || (exports.P_3_1Server = {}));
 //# sourceMappingURL=server.js.map

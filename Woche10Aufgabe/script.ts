@@ -1,5 +1,5 @@
 
-/*let formularForm: HTMLFormElement = <HTMLFormElement>document.getElementById("formular");
+let formularForm: HTMLFormElement = <HTMLFormElement>document.getElementById("formular");
 
 let registerButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("submit");
 registerButton.addEventListener("click", submitToServer);
@@ -33,4 +33,3 @@ function processData(_event: Event): void {
     console.log();
 }
 
-*/

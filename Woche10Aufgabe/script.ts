@@ -1,4 +1,3 @@
-
 let formularForm: HTMLFormElement = <HTMLFormElement>document.getElementById("formular");
 
 let registerButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("submit");

@@ -16,50 +16,27 @@
         <h1>Registrieren</h1>
 
 
-        <label>Mail-Adresse:</label>
-        <input type="text" name="email" />
-        <br>
-        <br>
-        <label>Vorname:</label>
-        <input type="text" name="vname" />
-        <br>
-        <br>
-        <label>Nachname:</label>
-        <input type="text" name="nname" />
-        <br>
-        <br>
-        <label>Benutzername:</label>
-        <input type="text" name="bname" />
-        <br>
-        <br>
-        <label for="age">Alter:</label>
-        <input type="number" />
-        <br>
-        <br>
-        <label>Straße & Hausnummer:</label>
-        <input type="text" name="street" />
-        <br>
-        <br>
-        <label>Stadt:</label>
-        <input type="text" name="stadt" />
-        <br>
-        <br>
-        <label>Bundesland:</label>
-        <input type="text" name="Bundesland" />
-        <br>
-        <br>
-        <label>Passwort:</label>
-        <input type="text" name="pwort" />
-        <br>
-        <br>
-        <button id="submit" name="Regestrieren" type="button">Regestrieren</button>
-        <br>
-        <br>
-        <hr>
-        <br>
-        <a href="anfrage.html">Schaue dir hier andere User an!</a>
 
-    </div>
+        <form method="GET" id="formular">
+            <label for="fname">Vorname:</label>
+            <input type="text" name="fname" value=""><br>
+
+            <label for="lname">Nachname:</label>
+            <input type="text" name="lname" value=""><br>
+
+            <label for="email">E-mail:</label>
+            <input type="text" name="email" value=""><br>
+
+            <label for="passwort">Passwort:</label>
+            <input type="password" id="pass" name="passwort" required><br>
+            <br>
+            <br>
+            <button id="submit" name="Regestrieren" type="button">Regestrieren</button>
+
+        </form>
+
+
+
 </body>
 
 

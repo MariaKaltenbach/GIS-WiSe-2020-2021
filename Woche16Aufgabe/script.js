@@ -1,60 +1,24 @@
 "use strict";
-var Abgabe3;
-(function (Abgabe3) {
-    //Registrierung und Login
-    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "registration.html" || window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "login.html") {
-        let submit = document.getElementById("submit");
-        let form = document.getElementById("form");
-        let antwort = document.getElementById("antwort");
-        if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "registration.html") {
-            submit.addEventListener("click", function () { checkForm(4); });
-        }
-        else {
-            submit.addEventListener("click", function () { checkForm(2); });
-        }
-        function checkForm(_formSize) {
-            let formdata = new FormData(form);
-            let formstring = new URLSearchParams(formdata);
-            let x = 0;
-            antwort.innerText = "";
-            for (let entry of formstring.values()) {
-                if (entry != "") {
-                    x++;
-                }
-            }
-            if (x < _formSize) {
-                antwort.innerText = "Bitte füllen Sie das Formular vollständig aus";
-            }
-            else {
-                send();
-            }
-        }
-        async function send() {
-            let formdata = new FormData(form);
-            let formstring = new URLSearchParams(formdata);
-            //Senden und fetchen der Antwort
-            let response = await fetch("https://giswise2021.herokuapp.com/", {
-                method: "POST",
-                body: formstring
-            });
-            let data = await response.text();
-            antwort.innerText = data;
-        }
-    }
-    //Alle User abfragen
-    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "anfrage.html") {
-        let submit = document.getElementById("submit");
-        let antwort = document.getElementById("antwort");
-        submit.addEventListener("click", send);
-        async function send() {
-            antwort.innerText = "";
-            //Senden und fetchen der Antwort
-            let response = await fetch("https://giswise2021.herokuapp.com/", {
-                method: "POST"
-            });
-            let data = await response.text();
-            antwort.innerText = data.slice(0, -2) + ".";
-        }
-    }
-})(Abgabe3 || (Abgabe3 = {}));
+let formularForm = document.getElementById("formular");
+let registerButton = document.getElementById("submit");
+registerButton.addEventListener("click", submitToServer);
+//let url: string = "https://giswise2021.herokuapp.com/";
+let url = "http://localhost:8100";
+async function submitToServer(_event) {
+    let formData = new FormData(document.forms[0]);
+    let query = new URLSearchParams(formData);
+    url = url + "?" + query.toString();
+    console.log(url);
+    let response = await fetch(url + "?" + query.toString());
+    let responseText = await response.text();
+    console.log(response);
+    alert(responseText);
+}
+async function communicate(_url) {
+    let response = await fetch(_url);
+    console.log("Response", response);
+}
+function processData(_event) {
+    console.log();
+}
 //# sourceMappingURL=script.js.map

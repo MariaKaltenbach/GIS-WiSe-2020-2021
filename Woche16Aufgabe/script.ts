@@ -1,82 +1,34 @@
-namespace Abgabe3 {
+let formularForm: HTMLFormElement = <HTMLFormElement>document.getElementById("formular");
 
-    //Registrierung und Login
-    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "registration.html" || window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "login.html") {
-  
-      let submit: HTMLElement = document.getElementById("submit");
-      let form: HTMLFormElement = <HTMLFormElement>document.getElementById("form");
-      let antwort: HTMLElement = document.getElementById("antwort");
-  
-      if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "registration.html") {
-        submit.addEventListener("click", function (): void { checkForm(4); });
-      }
-      else { submit.addEventListener("click", function (): void { checkForm(2); }); }
-  
-  
-      function checkForm(_formSize: number): void {
-        let formdata: FormData = new FormData(form);
-        let formstring: URLSearchParams = new URLSearchParams(<URLSearchParams>formdata);
-        let x: number = 0;
-        antwort.innerText = "";
-  
-        for (let entry of formstring.values()) {
-          if (entry != "") { x++; }
-        }
-  
-        if (x < _formSize) { antwort.innerText = "Bitte füllen Sie das Formular vollständig aus"; }
-        else { send(); }
-      }
-  
-      async function send(): Promise<void> {
-  
-        let formdata: FormData = new FormData(form);
-        let formstring: URLSearchParams = new URLSearchParams(<URLSearchParams>formdata);
-  
-  
-  
-        //Senden und fetchen der Antwort
-        
-        let response: Response = await fetch("https://giswise2021.herokuapp.com/", {
-          method: "POST",
-  
-          body: formstring
-        });
-  
-        let data: string = await response.text();
-  
-        antwort.innerText = data;
-  
-  
-      }
-  
-    }
-  
-    //Alle User abfragen
-    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "anfrage.html") {
-  
-  
-      let submit: HTMLElement = document.getElementById("submit");
-      let antwort: HTMLElement = document.getElementById("antwort");
-      submit.addEventListener("click", send);
-  
-  
-  
-      async function send(): Promise<void> {
-  
-        antwort.innerText = "";
-        //Senden und fetchen der Antwort
-  
-        let response: Response = await fetch("https://giswise2021.herokuapp.com/", {
-          method: "POST"
-  
-        });
-  
-        let data: string = await response.text();
-  
-        antwort.innerText = data.slice(0, -2) + ".";
-          
-      }
-  
-    }
-  
-  }
+let registerButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("submit");
+registerButton.addEventListener("click", submitToServer);
+
+//let url: string = "https://giswise2021.herokuapp.com/";
+let url: string = "http://localhost:8100";
+
+async function submitToServer(_event: Event): Promise<void> {
+
+    let formData: FormData = new FormData(document.forms[0]);
+    let query: URLSearchParams = new URLSearchParams(<undefined>formData);
+
+
+    url = url + "?" + query.toString();
+    console.log(url);
+
+    let response: Response = await fetch(url + "?" + query.toString());
+    let responseText: string = await response.text();
+    console.log(response);
+    alert(responseText);
+}
+
+async function communicate(_url: RequestInfo): Promise<void> {
+    let response: Response = await fetch(_url);
+    console.log("Response", response);
+}
+
+function processData(_event: Event): void {
+
+
+    console.log();
+}
+

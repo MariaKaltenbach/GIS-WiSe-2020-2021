@@ -1,22 +1,31 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.P_3_1Server = void 0;
+exports.Server = void 0;
 //importiert Http Modul 
 const Http = require("http");
 const Url = require("url");
-//import * as Mongo from "mongodb";
-var P_3_1Server;
-(function (P_3_1Server) {
+const Mongo = require("mongodb");
+var Server;
+(function (Server) {
+    let userAnlegen;
+    let databaseUrl = "mongodb+srv://UserTest:<password>@mariakltb.sfhfn.mongodb.net/<dbname>?retryWrites=true&w=majority";
+    async function connectDB() {
+        let mongoClient = new Mongo.MongoClient("localhost:27017");
+        await mongoClient.connect();
+        let data = mongoClient.db("Test").collection("Students");
+        data.find({ "Name": "Maria" });
+    }
+    connectDB();
     console.log("Starting server");
-    //enviroment mit der Angabe der Portnummer von Heroku
+    //heroku port nummer für den localhost anlegen
     let port = Number(process.env.PORT);
-    //wenn port nicht definiert ist (keiner von heroku zugewiesen wurde), wird port nr. 8100 aufgerufen
+    //wenn kein Port definiert ist soll port nummer 8100 genommen werden
     if (!port)
         port = 8100;
-    //server wird erstellt    
+    //server erstellen
     let server = Http.createServer();
-    server.addListener("request", handleRequest);
-    server.addListener("listening", handleListen);
+    server.addListener("request", handleRequest); //es wird angeftagt
+    server.addListener("listening", handleListen); //und gehorcht
     server.listen(port);
     function handleListen() {
         console.log("Listening");
@@ -27,13 +36,21 @@ var P_3_1Server;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let q = Url.parse(_request.url, true);
+            //Server antwort in HTML ausgeben
             for (let key in q.query) {
                 _response.write(key + ":" + q.query[key] + "<br/>");
             }
+            //Server antwort in Json sting ausgeben
             let stringJSON = JSON.stringify(q.query);
             _response.write(stringJSON);
         }
         _response.end();
     }
-})(P_3_1Server = exports.P_3_1Server || (exports.P_3_1Server = {}));
+    if (q.pathname == "/anfrage") {
+    }
+    else if (q.pathname == "/registration") {
+    }
+    else if (q.pathname == "/login") {
+    }
+})(Server = exports.Server || (exports.Server = {}));
 //# sourceMappingURL=server.js.map
